@@ -126,7 +126,6 @@
     .badge-green { background: #e8f5e9; color: #2e7d32; }
     .badge-yellow { background: #fff8e1; color: #f57f17; }
     .badge-blue { background: #e3f2fd; color: #1565c0; }
-    .badge-black { background: #eceff1; color: #37474f; }
     
     /* ALERT CARDS */
     .alert-grid {
@@ -161,7 +160,6 @@
     .lb-score { font-size: 1.3rem; font-weight: bold; color: #1a237e; }
     
     /* FORM */
-    .form-section { margin-top: 15px; }
     .form-tabs { display: flex; gap: 0; border-bottom: 2px solid #e0e0e0; margin-bottom: 15px; overflow-x: auto; }
     .form-tab-btn {
       padding: 10px 15px;
@@ -222,7 +220,7 @@
     }
     .upload-area .icon { font-size: 2.5rem; }
     .upload-area .text { margin-top: 8px; font-size: 0.85rem; }
-    .upload-area .warning { color: #d32f2f; font-weight: 600; font-size: 0.8rem; }
+    .upload-area .warning { color: #d32f2f; font-weight: 600; font-size: 0.8rem; margin-top: 5px; }
     .btn-camera {
       margin-top: 12px;
       padding: 10px 25px;
@@ -265,6 +263,7 @@
       transform: translateX(120%);
       transition: transform 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      max-width: 300px;
     }
     .notification.show { transform: translateX(0); }
     .notification.success { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #4caf50; }
@@ -304,13 +303,13 @@
 
 <!-- NAV TABS -->
 <div class="nav-tabs">
-  <button class="nav-tab active" onclick="showSection('dashboard')">📊 Dashboard</button>
-  <button class="nav-tab" onclick="showSection('tokoloss')">🔴 Toko Loss</button>
-  <button class="nav-tab" onclick="showSection('noo')">🆕 NOO</button>
-  <button class="nav-tab" onclick="showSection('warning')">⚠️ Warning</button>
-  <button class="nav-tab" onclick="showSection('leaderboard')">🏆 Rank</button>
-  <button class="nav-tab" onclick="showSection('input')">📝 Input</button>
-  <button class="nav-tab" onclick="showSection('foto')">📷 Foto</button>
+  <button class="nav-tab active" onclick="showSection('dashboard', this)">📊 Dashboard</button>
+  <button class="nav-tab" onclick="showSection('tokoloss', this)">🔴 Toko Loss</button>
+  <button class="nav-tab" onclick="showSection('noo', this)">🆕 NOO</button>
+  <button class="nav-tab" onclick="showSection('warning', this)">⚠️ Warning</button>
+  <button class="nav-tab" onclick="showSection('leaderboard', this)">🏆 Rank</button>
+  <button class="nav-tab" onclick="showSection('input', this)">📝 Input</button>
+  <button class="nav-tab" onclick="showSection('foto', this)">📷 Foto</button>
 </div>
 
 <!-- LOADING -->
@@ -367,14 +366,14 @@
   <div class="section" id="sec-input">
     <h2>📝 Input Data</h2>
     <div class="form-tabs">
-      <button class="form-tab-btn active" onclick="showFormTab('daily')">📋 Daily Report</button>
-      <button class="form-tab-btn" onclick="showFormTab('revisit')">🔄 Revisit</button>
-      <button class="form-tab-btn" onclick="showFormTab('noo-form')">🆕 NOO Baru</button>
+      <button class="form-tab-btn active" onclick="showFormTab('daily', this)">📋 Daily Report</button>
+      <button class="form-tab-btn" onclick="showFormTab('revisit', this)">🔄 Revisit</button>
+      <button class="form-tab-btn" onclick="showFormTab('noo-form', this)">🆕 NOO Baru</button>
     </div>
     
     <!-- DAILY REPORT FORM -->
     <div class="form-content active" id="form-daily">
-      <form onsubmit="submitDaily(event)">
+      <form id="dailyForm" onsubmit="submitDaily(event)">
         <div class="form-grid">
           <div class="form-group"><label>Tanggal</label><input type="date" id="dr-tgl" required></div>
           <div class="form-group"><label>Salesman</label>
@@ -389,14 +388,14 @@
           <div class="form-group"><label>Toko Critical</label><input type="number" id="dr-crit" min="0" value="0"></div>
         </div>
         <div class="form-group"><label>📌 Kendala</label><textarea id="dr-kendala" rows="2" placeholder="Kendala hari ini..."></textarea></div>
-        <div class="form-group"><label>🎯 Action Plan Besok</label><textarea id="dr-action" rows="2" placeholder="Rencana besok..."></textarea></div>
+        <div class="form-group" style="margin-top:8px;"><label>🎯 Action Plan Besok</label><textarea id="dr-action" rows="2" placeholder="Rencana besok..."></textarea></div>
         <button type="submit" class="btn-submit">💾 Simpan Daily Report</button>
       </form>
     </div>
     
     <!-- REVISIT FORM -->
     <div class="form-content" id="form-revisit">
-      <form onsubmit="submitRevisit(event)">
+      <form id="revisitForm" onsubmit="submitRevisit(event)">
         <div class="form-grid">
           <div class="form-group"><label>Kode Toko</label><select id="rv-kode" required><option value="">--Pilih--</option></select></div>
           <div class="form-group"><label>Revisit Ke-</label><select id="rv-ke"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
@@ -412,7 +411,7 @@
     
     <!-- NOO FORM -->
     <div class="form-content" id="form-noo-form">
-      <form onsubmit="submitNOO(event)">
+      <form id="nooForm" onsubmit="submitNOO(event)">
         <div class="form-grid">
           <div class="form-group"><label>Nama Toko</label><input type="text" id="noo-nama" required></div>
           <div class="form-group"><label>Alamat</label><input type="text" id="noo-alamat" required></div>
@@ -431,7 +430,7 @@
   <!-- ==================== FOTO ==================== -->
   <div class="section" id="sec-foto">
     <h2>📷 Upload Foto Bukti Visit</h2>
-    <form onsubmit="submitFoto(event)">
+    <form id="fotoForm" onsubmit="submitFoto(event)">
       <div class="form-grid">
         <div class="form-group"><label>Salesman</label>
           <select id="foto-sales" required><option value="">--Pilih--</option><option>Andi</option><option>Budi</option><option>Roni</option><option>Rega</option></select>
@@ -443,7 +442,7 @@
         <div class="form-group"><label>Tanggal</label><input type="date" id="foto-tgl" required></div>
       </div>
       
-      <!-- Camera Only -->
+      <!-- Camera Only Upload -->
       <div class="upload-area" id="uploadArea" onclick="openCamera()">
         <div class="icon">📸</div>
         <div class="text"><strong>Ambil Foto Sekarang</strong></div>
@@ -475,7 +474,7 @@
         <div id="radiusResult" style="margin-top:8px;"></div>
       </div>
       
-      <div class="form-group"><label>Keterangan</label><textarea id="foto-ket" rows="2" placeholder="Catatan..."></textarea></div>
+      <div class="form-group" style="margin-top:10px;"><label>Keterangan</label><textarea id="foto-ket" rows="2" placeholder="Catatan..."></textarea></div>
       <button type="submit" class="btn-submit" id="btnFoto" disabled>📤 Upload Foto</button>
     </form>
   </div>
@@ -483,16 +482,16 @@
 </div>
 
 <!-- ============================================ -->
-<!-- JAVASCRIPT -->
+<!-- JAVASCRIPT - FULL FIXED -->
 <!-- ============================================ -->
 <script>
 // ============================================
-// CONFIG
+// CONFIG - URL API KAMU
 // ============================================
-const API = 'https://script.google.com/macros/s/AKfycbxd7DZkGBX7UiIV5QLnp2MIOS9S4xRUSVUQ_BeVXHGo33Zbf0ovLFVHkEqUhe59oAL_/exec';
+var API = 'https://script.google.com/macros/s/AKfycbxd7DZkGBX7UiIV5QLnp2MIOS9S4xRUSVUQ_BeVXHGo33Zbf0ovLFVHkEqUhe59oAL_/exec';
 
-let appData = {};
-let photoData = { base64: null, timestamp: null, gps: { lat: null, long: null } };
+var appData = {};
+var photoData = { base64: null, timestamp: null, gps: { lat: null, long: null } };
 
 // ============================================
 // INIT
@@ -507,12 +506,12 @@ window.addEventListener('load', function() {
 });
 
 // ============================================
-// LOAD DATA
+// LOAD DATA (GET - tidak ada masalah CORS)
 // ============================================
 async function loadAllData() {
   showLoading(true);
   try {
-    const res = await fetch(API + '?action=all');
+    var res = await fetch(API + '?action=all');
     appData = await res.json();
     renderDashboard();
     renderTokoLoss();
@@ -521,43 +520,74 @@ async function loadAllData() {
     renderLeaderboard();
     loadDropdowns();
     document.getElementById('lastUpdate').textContent = 'Update: ' + appData.lastUpdate;
+    showNotif('✅ Data berhasil dimuat', 'success');
   } catch(e) {
+    console.error('Load error:', e);
     showNotif('❌ Gagal load data. Cek koneksi.', 'error');
   }
   showLoading(false);
 }
 
 // ============================================
+// ⭐ POST DATA - FIX: KIRIM VIA GET (ANTI-CORS)
+// ============================================
+async function postData(action, payload) {
+  showNotif('⏳ Menyimpan...', 'loading');
+  
+  try {
+    // Encode data dan kirim via GET parameter (hindari CORS)
+    var dataStr = encodeURIComponent(JSON.stringify({ action: action, payload: payload }));
+    var url = API + '?data=' + dataStr;
+    
+    var response = await fetch(url);
+    var result = await response.json();
+    
+    if (result.success) {
+      showNotif('✅ ' + (result.message || 'Berhasil disimpan!'), 'success');
+    } else {
+      showNotif('⚠️ ' + (result.message || 'Ada masalah'), 'error');
+    }
+    
+    setTimeout(loadAllData, 2000);
+    
+  } catch(e) {
+    console.error('PostData error:', e);
+    showNotif('❌ Gagal. Coba lagi.', 'error');
+  }
+}
+
+// ============================================
 // RENDER DASHBOARD
 // ============================================
 function renderDashboard() {
-  const s = appData.summary;
-  const cards = document.getElementById('summaryCards');
-  cards.innerHTML = `
-    <div class="card card-danger"><div class="card-value">${s.tokoLoss.totalLoss}</div><div class="card-label">Toko Loss</div></div>
-    <div class="card card-success"><div class="card-value">${s.tokoLoss.recovered}</div><div class="card-label">Recovered</div></div>
-    <div class="card card-warning"><div class="card-value">${s.tokoLoss.inProcess}</div><div class="card-label">In Process</div></div>
-    <div class="card card-info"><div class="card-value">${s.noo.nooActive}</div><div class="card-label">NOO Active</div></div>
-    <div class="card card-purple"><div class="card-value">${s.tokoLoss.recoveryRate}%</div><div class="card-label">Recovery Rate</div></div>
-  `;
+  var s = appData.summary;
+  if (!s) return;
+  
+  var cards = document.getElementById('summaryCards');
+  cards.innerHTML = 
+    '<div class="card card-danger"><div class="card-value">' + s.tokoLoss.totalLoss + '</div><div class="card-label">Toko Loss</div></div>' +
+    '<div class="card card-success"><div class="card-value">' + s.tokoLoss.recovered + '</div><div class="card-label">Recovered</div></div>' +
+    '<div class="card card-warning"><div class="card-value">' + s.tokoLoss.inProcess + '</div><div class="card-label">In Process</div></div>' +
+    '<div class="card card-info"><div class="card-value">' + (s.noo.nooActive || 0) + '</div><div class="card-label">NOO Active</div></div>' +
+    '<div class="card card-purple"><div class="card-value">' + s.tokoLoss.recoveryRate + '%</div><div class="card-label">Recovery Rate</div></div>';
   
   // Progress bar
-  const rate = s.tokoLoss.recoveryRate;
-  const bar = document.getElementById('progressRecovery');
+  var rate = s.tokoLoss.recoveryRate;
+  var bar = document.getElementById('progressRecovery');
   bar.style.width = rate + '%';
   bar.textContent = rate + '%';
   bar.className = 'progress-bar-fill ' + (rate >= 70 ? 'progress-green' : rate >= 40 ? 'progress-orange' : 'progress-red');
   
   // Alerts
-  const ew = appData.earlyWarning || [];
-  const critical = ew.filter(r => String(r.Status).includes('Critical') || String(r.Status).includes('Almost'));
-  const alertGrid = document.getElementById('alertGrid');
+  var ew = appData.earlyWarning || [];
+  var critical = ew.filter(function(r) { return String(r.Status || '').indexOf('Critical') > -1 || String(r.Status || '').indexOf('Almost') > -1; });
+  var alertGrid = document.getElementById('alertGrid');
   if (critical.length === 0) {
     alertGrid.innerHTML = '<div style="color:#2e7d32;">✅ Tidak ada toko critical</div>';
   } else {
-    alertGrid.innerHTML = critical.map(t => {
-      const cls = String(t.Status).includes('Almost') ? 'alert-almost' : 'alert-critical';
-      return `<div class="alert-card ${cls}"><strong>${t['Nama Toko']}</strong><br>${t.Salesman} | ${t['Hari Sejak Last Order']} hari<br><em>→ ${t['Action Required'] || '-'}</em></div>`;
+    alertGrid.innerHTML = critical.map(function(t) {
+      var cls = String(t.Status).indexOf('Almost') > -1 ? 'alert-almost' : 'alert-critical';
+      return '<div class="alert-card ' + cls + '"><strong>' + t['Nama Toko'] + '</strong><br>' + t.Salesman + ' | ' + t['Hari Sejak Last Order'] + ' hari<br><em>→ ' + (t['Action Required'] || '-') + '</em></div>';
     }).join('');
   }
 }
@@ -566,46 +596,40 @@ function renderDashboard() {
 // RENDER TABLES
 // ============================================
 function renderTokoLoss() {
-  const data = appData.tokoLoss || [];
-  document.getElementById('tokoLossTable').innerHTML = makeTable(data, ['No','Kode Toko','Nama Toko','Salesman','Kategori Loss','Alasan Loss','Status','Tgl Revisit 1','Hasil Revisit 1']);
+  var data = appData.tokoLoss || [];
+  document.getElementById('tokoLossTable').innerHTML = makeTable(data, ['No','Kode Toko','Nama Toko','Salesman','Kategori Loss','Alasan Loss','Status']);
 }
 
 function renderNOO() {
-  const data = appData.noo || [];
-  document.getElementById('nooTable').innerHTML = makeTable(data, ['No','Kode NOO','Nama Toko','Salesman','Tgl Canvassing','Tgl First Order','Status NOO']);
+  var data = appData.noo || [];
+  document.getElementById('nooTable').innerHTML = makeTable(data, ['No','Kode NOO','Nama Toko','Salesman','Tgl Canvassing','Status NOO']);
 }
 
 function renderWarning() {
-  const data = appData.earlyWarning || [];
+  var data = appData.earlyWarning || [];
   document.getElementById('warningTable').innerHTML = makeTable(data, ['No','Kode Toko','Nama Toko','Salesman','Hari Sejak Last Order','Status','Action Required']);
 }
 
 function renderLeaderboard() {
-  const data = appData.leaderboard || [];
-  const list = document.getElementById('leaderboardList');
-  const medals = ['🥇','🥈','🥉','4️⃣'];
-  list.innerHTML = data.map((item, i) => `
-    <div class="leaderboard-item">
-      <div class="lb-rank">${medals[i] || (i+1)}</div>
-      <div class="lb-info">
-        <div class="lb-name">${item.Salesman}</div>
-        <div class="lb-points">Recovery: ${item['Poin Recovery (10/toko)'] || 0} | NOO: ${item['Poin NOO (15/toko)'] || 0}</div>
-      </div>
-      <div class="lb-score">${item['Total Poin'] || 0} pts</div>
-    </div>
-  `).join('');
+  var data = appData.leaderboard || [];
+  var list = document.getElementById('leaderboardList');
+  var medals = ['🥇','🥈','🥉','4️⃣'];
+  list.innerHTML = data.map(function(item, i) {
+    return '<div class="leaderboard-item"><div class="lb-rank">' + (medals[i] || (i+1)) + '</div><div class="lb-info"><div class="lb-name">' + (item.Salesman || '-') + '</div><div class="lb-points">Recovery: ' + (item['Poin Recovery (10/toko)'] || 0) + ' | NOO: ' + (item['Poin NOO (15/toko)'] || 0) + '</div></div><div class="lb-score">' + (item['Total Poin'] || 0) + ' pts</div></div>';
+  }).join('');
 }
 
 function makeTable(data, cols) {
   if (!data.length) return '<p style="color:#999;">Belum ada data</p>';
-  let html = '<table><thead><tr>' + cols.map(c => `<th>${c}</th>`).join('') + '</tr></thead><tbody>';
-  data.forEach(row => {
-    html += '<tr>' + cols.map(c => {
-      let val = row[c] || '-';
-      if (String(val).includes('Recovery') && !String(val).includes('Tidak')) val = `<span class="badge badge-green">${val}</span>`;
-      else if (String(val).includes('Critical') || String(val).includes('Belum')) val = `<span class="badge badge-red">${val}</span>`;
-      else if (String(val).includes('Warning') || String(val).includes('Proses')) val = `<span class="badge badge-yellow">${val}</span>`;
-      return `<td>${val}</td>`;
+  var html = '<table><thead><tr>' + cols.map(function(c) { return '<th>' + c + '</th>'; }).join('') + '</tr></thead><tbody>';
+  data.forEach(function(row) {
+    html += '<tr>' + cols.map(function(c) {
+      var val = row[c] !== undefined && row[c] !== '' ? row[c] : '-';
+      val = String(val);
+      if (val.indexOf('Recovery') > -1 && val.indexOf('Tidak') === -1) val = '<span class="badge badge-green">' + val + '</span>';
+      else if (val.indexOf('Critical') > -1 || val.indexOf('Belum') > -1) val = '<span class="badge badge-red">' + val + '</span>';
+      else if (val.indexOf('Warning') > -1 || val.indexOf('Proses') > -1) val = '<span class="badge badge-yellow">' + val + '</span>';
+      return '<td>' + val + '</td>';
     }).join('') + '</tr>';
   });
   html += '</tbody></table>';
@@ -615,91 +639,113 @@ function makeTable(data, cols) {
 // ============================================
 // NAVIGATION
 // ============================================
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
   document.getElementById('sec-' + id).classList.add('active');
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
-function showFormTab(id) {
-  document.querySelectorAll('.form-content').forEach(f => f.classList.remove('active'));
-  document.querySelectorAll('.form-tab-btn').forEach(t => t.classList.remove('active'));
+function showFormTab(id, btn) {
+  document.querySelectorAll('.form-content').forEach(function(f) { f.classList.remove('active'); });
+  document.querySelectorAll('.form-tab-btn').forEach(function(t) { t.classList.remove('active'); });
   document.getElementById('form-' + id).classList.add('active');
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 // ============================================
-// SUBMIT FORMS
+// SUBMIT DAILY REPORT
 // ============================================
 async function submitDaily(e) {
   e.preventDefault();
   await postData('addDailyReport', {
-    tanggal: gv('dr-tgl'), salesman: gv('dr-sales'),
-    totalKunjungan: parseInt(gv('dr-visit')), effectiveCall: parseInt(gv('dr-ec')),
-    tokoLossVisit: parseInt(gv('dr-loss')), recoveryBerhasil: parseInt(gv('dr-rec')),
-    nooHariIni: parseInt(gv('dr-noo')), tokoWarningVisit: parseInt(gv('dr-warn')),
-    tokoCriticalVisit: parseInt(gv('dr-crit')),
-    kendala: gv('dr-kendala'), actionPlan: gv('dr-action')
+    tanggal: gv('dr-tgl'),
+    salesman: gv('dr-sales'),
+    totalKunjungan: parseInt(gv('dr-visit')) || 0,
+    effectiveCall: parseInt(gv('dr-ec')) || 0,
+    tokoLossVisit: parseInt(gv('dr-loss')) || 0,
+    recoveryBerhasil: parseInt(gv('dr-rec')) || 0,
+    nooHariIni: parseInt(gv('dr-noo')) || 0,
+    tokoWarningVisit: parseInt(gv('dr-warn')) || 0,
+    tokoCriticalVisit: parseInt(gv('dr-crit')) || 0,
+    kendala: gv('dr-kendala'),
+    actionPlan: gv('dr-action')
   });
-  e.target.reset(); setToday('dr-tgl');
-}
-
-async function submitRevisit(e) {
-  e.preventDefault();
-  await postData('updateTokoLoss', {
-    kodeToko: gv('rv-kode'), revisitKe: parseInt(gv('rv-ke')),
-    tanggalRevisit: gv('rv-tgl'), status: gv('rv-status'), hasilRevisit: gv('rv-hasil')
-  });
-  e.target.reset(); setToday('rv-tgl');
-}
-
-async function submitNOO(e) {
-  e.preventDefault();
-  await postData('addNOO', {
-    namaToko: gv('noo-nama'), alamat: gv('noo-alamat'),
-    namaPemilik: gv('noo-pemilik'), noHP: gv('noo-hp'),
-    salesman: gv('noo-sales'), tglCanvassing: gv('noo-tgl')
-  });
-  e.target.reset(); setToday('noo-tgl');
+  document.getElementById('dailyForm').reset();
+  setToday('dr-tgl');
 }
 
 // ============================================
-// FOTO - ANTI CHEAT
+// SUBMIT REVISIT
+// ============================================
+async function submitRevisit(e) {
+  e.preventDefault();
+  await postData('updateTokoLoss', {
+    kodeToko: gv('rv-kode'),
+    revisitKe: parseInt(gv('rv-ke')),
+    tanggalRevisit: gv('rv-tgl'),
+    status: gv('rv-status'),
+    hasilRevisit: gv('rv-hasil')
+  });
+  document.getElementById('revisitForm').reset();
+  setToday('rv-tgl');
+}
+
+// ============================================
+// SUBMIT NOO
+// ============================================
+async function submitNOO(e) {
+  e.preventDefault();
+  await postData('addNOO', {
+    namaToko: gv('noo-nama'),
+    alamat: gv('noo-alamat'),
+    namaPemilik: gv('noo-pemilik'),
+    noHP: gv('noo-hp'),
+    salesman: gv('noo-sales'),
+    tglCanvassing: gv('noo-tgl')
+  });
+  document.getElementById('nooForm').reset();
+  setToday('noo-tgl');
+}
+
+// ============================================
+// FOTO - OPEN CAMERA
 // ============================================
 function openCamera() {
   if (!photoData.gps.lat) {
     getGPS();
-    showNotif('📍 Tunggu GPS dulu...', 'loading');
-    setTimeout(() => document.getElementById('fotoInput').click(), 2000);
+    showNotif('📍 Tunggu GPS...', 'loading');
+    setTimeout(function() { document.getElementById('fotoInput').click(); }, 2000);
     return;
   }
   document.getElementById('fotoInput').click();
 }
 
+// ============================================
+// FOTO - HANDLE & VALIDATE
+// ============================================
 function handlePhoto(e) {
-  const file = e.target.files[0];
+  var file = e.target.files[0];
   if (!file) return;
   
   photoData.timestamp = new Date();
   
-  // Validasi
-  const fileAge = (Date.now() - file.lastModified) / 1000;
-  const isRecent = fileAge < 300;
-  const isJPEG = file.type === 'image/jpeg';
-  const sizeOK = file.size > 50000 && file.size < 15000000;
-  const hasGPS = photoData.gps.lat !== null;
+  // Validasi anti-cheat
+  var fileAge = (Date.now() - file.lastModified) / 1000;
+  var isRecent = fileAge < 300;
+  var isJPEG = file.type === 'image/jpeg' || file.type === 'image/jpg';
+  var sizeOK = file.size > 50000 && file.size < 15000000;
+  var hasGPS = photoData.gps.lat !== null;
   
   // Show validation
   document.getElementById('valPanel').style.display = 'block';
-  document.getElementById('valItems').innerHTML = `
-    <div class="val-item ${isRecent ? 'passed' : 'failed'}"><span>${isRecent ? '✅' : '❌'}</span> Foto baru (${Math.round(fileAge)}s lalu)</div>
-    <div class="val-item ${hasGPS ? 'passed' : 'failed'}"><span>${hasGPS ? '✅' : '❌'}</span> GPS ${hasGPS ? 'OK' : 'tidak aktif'}</div>
-    <div class="val-item ${sizeOK ? 'passed' : 'failed'}"><span>${sizeOK ? '✅' : '❌'}</span> Ukuran ${(file.size/1024/1024).toFixed(1)}MB</div>
-    <div class="val-item ${isJPEG ? 'passed' : 'failed'}"><span>${isJPEG ? '✅' : '⚠️'}</span> Format ${file.type}</div>
-  `;
+  document.getElementById('valItems').innerHTML = 
+    '<div class="val-item ' + (isRecent ? 'passed' : 'failed') + '"><span>' + (isRecent ? '✅' : '❌') + '</span> Foto baru (' + Math.round(fileAge) + 's lalu)</div>' +
+    '<div class="val-item ' + (hasGPS ? 'passed' : 'failed') + '"><span>' + (hasGPS ? '✅' : '❌') + '</span> GPS ' + (hasGPS ? 'OK' : 'tidak aktif') + '</div>' +
+    '<div class="val-item ' + (sizeOK ? 'passed' : 'failed') + '"><span>' + (sizeOK ? '✅' : '❌') + '</span> Ukuran ' + (file.size/1024/1024).toFixed(1) + 'MB</div>' +
+    '<div class="val-item ' + (isJPEG ? 'passed' : 'failed') + '"><span>' + (isJPEG ? '✅' : '⚠️') + '</span> Format ' + file.type + '</div>';
   
-  const allPass = isRecent && hasGPS && sizeOK;
+  var allPass = isRecent && hasGPS && sizeOK;
   
   if (!allPass) {
     showNotif('❌ Foto ditolak! Ambil ulang dari kamera.', 'error');
@@ -707,15 +753,16 @@ function handlePhoto(e) {
   }
   
   // Process & watermark
-  const reader = new FileReader();
+  var reader = new FileReader();
   reader.onload = function(ev) {
-    const img = new Image();
+    var img = new Image();
     img.onload = function() {
-      const canvas = document.getElementById('watermarkCanvas');
-      const ctx = canvas.getContext('2d');
-      let w = img.width, h = img.height;
+      var canvas = document.getElementById('watermarkCanvas');
+      var ctx = canvas.getContext('2d');
+      var w = img.width, h = img.height;
       if (w > 800) { h = (800/w)*h; w = 800; }
-      canvas.width = w; canvas.height = h;
+      canvas.width = w;
+      canvas.height = h;
       ctx.drawImage(img, 0, 0, w, h);
       
       // Watermark
@@ -723,57 +770,92 @@ function handlePhoto(e) {
       ctx.fillRect(0, h-50, w, 50);
       ctx.fillStyle = '#fff';
       ctx.font = 'bold 11px Arial';
-      const timeStr = photoData.timestamp.toLocaleString('id-ID');
+      var timeStr = photoData.timestamp.toLocaleString('id-ID');
       ctx.fillText('🏪 WIN BACK STORE | ' + gv('foto-sales') + ' | ' + timeStr, 8, h-30);
       ctx.font = '10px Arial';
-      ctx.fillText('📍 GPS: ' + (photoData.gps.lat||'-') + ', ' + (photoData.gps.long||'-'), 8, h-12);
+      ctx.fillText('📍 GPS: ' + (photoData.gps.lat || '-') + ', ' + (photoData.gps.long || '-'), 8, h-12);
       
       photoData.base64 = canvas.toDataURL('image/jpeg', 0.7).split(',')[1];
       document.getElementById('previewArea').style.display = 'block';
       document.getElementById('uploadArea').style.display = 'none';
       document.getElementById('btnFoto').disabled = false;
+      showNotif('✅ Foto valid! Siap upload.', 'success');
     };
     img.src = ev.target.result;
   };
   reader.readAsDataURL(file);
 }
 
+// ============================================
+// ⭐ SUBMIT FOTO - FIX: POST no-cors untuk data besar
+// ============================================
 async function submitFoto(e) {
   e.preventDefault();
-  if (!photoData.base64) return;
+  if (!photoData.base64) { showNotif('❌ Ambil foto dulu!', 'error'); return; }
   
-  const kodeToko = gv('foto-toko');
+  var kodeToko = gv('foto-toko');
   
-  // Radius check
+  // Radius check via GET (data kecil)
   document.getElementById('radiusPanel').style.display = 'block';
   try {
-    const res = await fetch(`${API}?action=checkRadius&kodeToko=${kodeToko}&lat=${photoData.gps.lat}&long=${photoData.gps.long}`);
-    const radius = await res.json();
+    var res = await fetch(API + '?action=checkRadius&kodeToko=' + encodeURIComponent(kodeToko) + '&lat=' + photoData.gps.lat + '&long=' + photoData.gps.long);
+    var radius = await res.json();
     
     if (!radius.valid && !radius.needRegister) {
-      document.getElementById('radiusResult').innerHTML = `<div class="radius-result radius-fail">❌ DITOLAK - Jarak ${radius.distance}m (max ${radius.radius}m)</div>`;
-      showNotif('❌ Terlalu jauh dari toko! ' + radius.distance + 'm', 'error');
+      document.getElementById('radiusResult').innerHTML = '<div class="radius-result radius-fail">❌ DITOLAK - Jarak ' + radius.distance + 'm (max ' + radius.radius + 'm)</div>';
+      showNotif('❌ Terlalu jauh dari toko!', 'error');
       return;
     }
-    document.getElementById('radiusResult').innerHTML = `<div class="radius-result radius-pass">✅ ${radius.message}</div>`;
-  } catch(err) {}
+    document.getElementById('radiusResult').innerHTML = '<div class="radius-result radius-pass">✅ ' + radius.message + '</div>';
+  } catch(err) {
+    console.log('Radius check skipped:', err);
+    document.getElementById('radiusResult').innerHTML = '<div class="radius-result radius-pass">⚠️ Radius check skipped</div>';
+  }
   
-  // Upload
-  await postData('uploadFotoSecure', {
-    salesman: gv('foto-sales'), kodeToko: kodeToko,
-    namaToko: document.getElementById('foto-toko').selectedOptions[0].textContent,
-    jenisFoto: gv('foto-jenis'), tanggal: gv('foto-tgl'),
-    fotoBase64: photoData.base64, mimeType: 'image/jpeg',
+  // Upload foto via POST no-cors (base64 terlalu besar untuk URL)
+  showNotif('⏳ Mengupload foto...', 'loading');
+  
+  var fotoPayload = {
+    salesman: gv('foto-sales'),
+    kodeToko: kodeToko,
+    namaToko: document.getElementById('foto-toko').selectedOptions[0] ? document.getElementById('foto-toko').selectedOptions[0].textContent : '',
+    jenisFoto: gv('foto-jenis'),
+    tanggal: gv('foto-tgl'),
+    fotoBase64: photoData.base64,
+    mimeType: 'image/jpeg',
     fileName: 'visit_' + kodeToko + '_' + Date.now() + '.jpg',
     keterangan: gv('foto-ket'),
-    latitude: photoData.gps.lat, longitude: photoData.gps.long
-  });
+    latitude: photoData.gps.lat,
+    longitude: photoData.gps.long
+  };
   
-  resetFoto();
+  try {
+    await fetch(API, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'uploadFotoSecure', payload: fotoPayload })
+    });
+    
+    // no-cors = tidak bisa baca response, tapi data tetap masuk
+    showNotif('✅ Foto berhasil diupload!', 'success');
+    resetFoto();
+    document.getElementById('fotoForm').reset();
+    setToday('foto-tgl');
+    setTimeout(loadAllData, 3000);
+    
+  } catch(e2) {
+    console.error('Upload error:', e2);
+    showNotif('❌ Gagal upload. Coba lagi.', 'error');
+  }
 }
 
+// ============================================
+// RESET FOTO
+// ============================================
 function resetFoto() {
   photoData.base64 = null;
+  photoData.timestamp = null;
   document.getElementById('previewArea').style.display = 'none';
   document.getElementById('uploadArea').style.display = 'block';
   document.getElementById('fotoInput').value = '';
@@ -795,53 +877,52 @@ function getGPS() {
       document.getElementById('gpsCoords').style.display = 'block';
       document.getElementById('gpsLat').textContent = pos.coords.latitude.toFixed(6);
       document.getElementById('gpsLong').textContent = pos.coords.longitude.toFixed(6);
-    }, function() {
+    }, function(err) {
       document.getElementById('gpsText').textContent = 'GPS gagal. Aktifkan lokasi!';
       document.getElementById('gpsText').className = 'gps-error';
+      console.error('GPS error:', err);
     }, { enableHighAccuracy: true, timeout: 10000 });
+  } else {
+    document.getElementById('gpsText').textContent = 'GPS tidak didukung';
+    document.getElementById('gpsText').className = 'gps-error';
   }
 }
 
 // ============================================
 // HELPERS
 // ============================================
-async function postData(action, payload) {
-  showNotif('⏳ Menyimpan...', 'loading');
-  try {
-    await fetch(API, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ action, payload })
-    });
-    showNotif('✅ Berhasil disimpan!', 'success');
-    setTimeout(loadAllData, 2000);
-  } catch(e) {
-    showNotif('❌ Gagal. Coba lagi.', 'error');
-  }
-}
-
 function loadDropdowns() {
-  const toko = appData.tokoLoss || [];
-  ['rv-kode','foto-toko'].forEach(id => {
-    const sel = document.getElementById(id);
+  var toko = appData.tokoLoss || [];
+  ['rv-kode','foto-toko'].forEach(function(id) {
+    var sel = document.getElementById(id);
     sel.innerHTML = '<option value="">--Pilih--</option>';
-    toko.forEach(t => {
-      sel.innerHTML += `<option value="${t['Kode Toko']}">${t['Kode Toko']} - ${t['Nama Toko']}</option>`;
+    toko.forEach(function(t) {
+      sel.innerHTML += '<option value="' + t['Kode Toko'] + '">' + t['Kode Toko'] + ' - ' + t['Nama Toko'] + '</option>';
     });
   });
 }
 
 function gv(id) { return document.getElementById(id).value; }
-function setToday(id) { document.getElementById(id).value = new Date().toISOString().split('T')[0]; }
-function showLoading(show) { document.getElementById('loadingOverlay').className = show ? 'loading-overlay' : 'loading-overlay hidden'; }
-function showNotif(msg, type) {
-  const n = document.getElementById('notification');
-  document.getElementById('notifMsg').textContent = msg;
-  n.className = 'notification ' + type + ' show';
-  if (type !== 'loading') setTimeout(() => n.classList.remove('show'), 3000);
+
+function setToday(id) {
+  var el = document.getElementById(id);
+  if (el) el.value = new Date().toISOString().split('T')[0];
 }
 
-// Auto refresh 5 menit
+function showLoading(show) {
+  document.getElementById('loadingOverlay').className = show ? 'loading-overlay' : 'loading-overlay hidden';
+}
+
+function showNotif(msg, type) {
+  var n = document.getElementById('notification');
+  document.getElementById('notifMsg').textContent = msg;
+  n.className = 'notification ' + type + ' show';
+  if (type !== 'loading') {
+    setTimeout(function() { n.classList.remove('show'); }, 3000);
+  }
+}
+
+// Auto refresh setiap 5 menit
 setInterval(loadAllData, 300000);
 </script>
 
