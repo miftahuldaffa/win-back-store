@@ -349,9 +349,7 @@
       <form id="dailyForm" onsubmit="submitDaily(event)">
         <div class="form-grid">
           <div class="form-group"><label>Tanggal</label><input type="date" id="dr-tgl" required></div>
-          <div class="form-group"><label>Salesman</label>
-            <select id="dr-sales" required></select>
-          </div>
+          <div class="form-group"><label>Salesman</label><select id="dr-sales" required></select></div>
           <div class="form-group"><label>Total Kunjungan</label><input type="number" id="dr-visit" min="0" required></div>
           <div class="form-group"><label>Effective Call</label><input type="number" id="dr-ec" min="0" required></div>
           <div class="form-group"><label>Toko Loss Divisit</label><input type="number" id="dr-loss" min="0" value="0"></div>
@@ -366,7 +364,7 @@
       </form>
     </div>
 
-    <!-- REVISIT FORM (Search) -->
+    <!-- REVISIT FORM -->
     <div class="form-content" id="form-revisit">
       <form id="revisitForm" onsubmit="submitRevisit(event)">
         <div class="form-grid">
@@ -387,7 +385,7 @@
       </form>
     </div>
 
-    <!-- NOO FORM (✅ + HK + Pola) -->
+    <!-- NOO FORM -->
     <div class="form-content" id="form-noo-form">
       <form id="nooForm" onsubmit="submitNOO(event)">
         <div class="form-grid">
@@ -418,9 +416,7 @@
               <option value="W4">W4 (Minggu 4 saja)</option>
             </select>
           </div>
-          <div class="form-group"><label>Salesman</label>
-            <select id="noo-sales" required></select>
-          </div>
+          <div class="form-group"><label>Salesman</label><select id="noo-sales" required></select></div>
           <div class="form-group"><label>Tanggal Canvassing</label><input type="date" id="noo-tgl" required></div>
         </div>
         <div class="form-group"><label>Keterangan</label><textarea id="noo-ket" rows="2" placeholder="Catatan tambahan..."></textarea></div>
@@ -434,9 +430,7 @@
     <h2>📷 Upload Foto Bukti Visit</h2>
     <form id="fotoForm" onsubmit="submitFoto(event)">
       <div class="form-grid">
-        <div class="form-group"><label>Salesman</label>
-          <select id="foto-sales" required></select>
-        </div>
+        <div class="form-group"><label>Salesman</label><select id="foto-sales" required></select></div>
         <div class="form-group" style="position:relative;">
           <label>Kode Toko</label>
           <input type="text" id="foto-toko" placeholder="Ketik kode/nama toko..." required autocomplete="off" oninput="searchToko(this.value, 'foto')">
@@ -471,7 +465,6 @@
         <div id="valItems" style="margin-top:8px;"></div>
       </div>
 
-      <!-- ✅ DISTANCE INFO PANEL (non-blocking, hanya info) -->
       <div class="distance-panel" id="distancePanel" style="display:none;">
         <strong>📍 Jarak dari Toko</strong>
         <div id="distanceResult" style="margin-top:8px;"></div>
@@ -488,7 +481,7 @@
 // ============================================
 // CONFIG
 // ============================================
-var API = 'https://script.google.com/macros/s/AKfycbx-NXKae0B4BmsOIjgce5ql9idl24wbJOjAAkvx_LwhkoalV23mYt2eXSUeqJcJJj59/exec?action=all';
+var API = 'https://script.google.com/macros/s/AKfycbxd7DZkGBX7UiIV5QLnp2MIOS9S4xRUSVUQ_BeVXHGo33Zbf0ovLFVHkEqUhe59oAL_/exec';
 var appData = {};
 var photoData = { base64: null, timestamp: null, gps: { lat: null, long: null } };
 
@@ -532,7 +525,6 @@ async function loadAllData() {
 function loadSalesmanDropdowns() {
   var master = appData.masterSalesman || [];
   var dropdownIds = ['dr-sales', 'noo-sales', 'foto-sales'];
-  
   dropdownIds.forEach(function(id) {
     var sel = document.getElementById(id);
     if (!sel) return;
@@ -546,37 +538,32 @@ function loadSalesmanDropdowns() {
 }
 
 // ============================================
-// SEARCH TOKO (+ HK + Pola info)
+// SEARCH TOKO
 // ============================================
 function searchToko(query, prefix) {
   var dropdown = document.getElementById(prefix + '-dropdown');
   var statusMsg = document.getElementById(prefix + '-status-msg');
-  
   if (!query || query.length < 1) {
     dropdown.style.display = 'none';
     statusMsg.style.display = 'none';
     return;
   }
-  
   var toko = appData.tokoLoss || [];
   var q = query.toLowerCase();
-  
   var results = toko.filter(function(t) {
     var kode = String(t['Kode Toko'] || '').toLowerCase();
     var nama = String(t['Nama Toko'] || '').toLowerCase();
     var kodeSls = String(t['Kode Salesman'] || '').toLowerCase();
     return kode.indexOf(q) > -1 || nama.indexOf(q) > -1 || kodeSls.indexOf(q) > -1;
   });
-  
   if (results.length === 0) {
     dropdown.style.display = 'block';
-    dropdown.innerHTML = '<div class="search-item" style="color:#c62828;">❌ Kode toko tidak ditemukan. Cek kembali.</div>';
+    dropdown.innerHTML = '<div class="search-item" style="color:#c62828;">❌ Kode toko tidak ditemukan.</div>';
     statusMsg.style.display = 'block';
     statusMsg.style.color = '#c62828';
-    statusMsg.textContent = '❌ Toko tidak ditemukan. Kode tersedia: ' + toko.map(function(t){return t['Kode Toko']}).join(', ');
+    statusMsg.textContent = '❌ Tidak ditemukan. Tersedia: ' + toko.map(function(t){return t['Kode Toko']}).join(', ');
     return;
   }
-  
   dropdown.style.display = 'block';
   dropdown.innerHTML = results.map(function(t) {
     var status = String(t.Status || '');
@@ -585,18 +572,11 @@ function searchToko(query, prefix) {
     else if (status.indexOf('Proses') > -1) badge = '🟡';
     else if (status.indexOf('Belum') > -1) badge = '🔴';
     else if (status.indexOf('Tidak Bisa') > -1) badge = '⚫';
-    
-    var hkPola = '';
-    if (t.HK || t.Pola) {
-      hkPola = ' | 📅 ' + (t.HK || '-') + ' (' + (t.Pola || '-') + ')';
-    }
-    
+    var hkPola = (t.HK || t.Pola) ? ' | 📅 ' + (t.HK || '-') + ' (' + (t.Pola || '-') + ')' : '';
     return '<div class="search-item" onclick="selectToko(\'' + t['Kode Toko'] + '\', \'' + (t['Nama Toko'] || '').replace(/'/g, "\\'") + '\', \'' + prefix + '\')">' +
       '<span class="code">' + t['Kode Toko'] + '</span> - ' + t['Nama Toko'] + ' ' + badge +
-      '<br><span class="detail">' + (t['Kode Salesman'] || '') + ' (' + (t.Salesman || '') + ')' + hkPola + ' | ' + (t['Alasan Loss'] || '') + '</span>' +
-    '</div>';
+      '<br><span class="detail">' + (t['Kode Salesman'] || '') + ' (' + (t.Salesman || '') + ')' + hkPola + '</span></div>';
   }).join('');
-  
   statusMsg.style.display = 'none';
 }
 
@@ -609,18 +589,13 @@ function selectToko(kode, nama, prefix) {
   statusMsg.textContent = '✅ ' + kode + ' - ' + nama;
 }
 
-// Close dropdowns on outside click
 document.addEventListener('click', function(e) {
-  if (!e.target.closest('#rv-dropdown') && e.target.id !== 'rv-kode') {
-    document.getElementById('rv-dropdown').style.display = 'none';
-  }
-  if (!e.target.closest('#foto-dropdown') && e.target.id !== 'foto-toko') {
-    document.getElementById('foto-dropdown').style.display = 'none';
-  }
+  if (!e.target.closest('#rv-dropdown') && e.target.id !== 'rv-kode') document.getElementById('rv-dropdown').style.display = 'none';
+  if (!e.target.closest('#foto-dropdown') && e.target.id !== 'foto-toko') document.getElementById('foto-dropdown').style.display = 'none';
 });
 
 // ============================================
-// POST DATA - VIA GET (ANTI CORS)
+// POST DATA VIA GET (ANTI CORS)
 // ============================================
 async function postData(action, payload) {
   showNotif('⏳ Menyimpan...', 'loading');
@@ -628,22 +603,13 @@ async function postData(action, payload) {
     var dataStr = JSON.stringify({ action: action, payload: payload });
     var encoded = encodeURIComponent(dataStr);
     var url = API + '?data=' + encoded;
-    
     if (url.length < 8000) {
       var response = await fetch(url);
       var result = await response.json();
-      if (result.success) {
-        showNotif('✅ ' + (result.message || 'Berhasil!'), 'success');
-      } else {
-        showNotif('⚠️ ' + (result.message || 'Ada masalah'), 'error');
-      }
+      if (result.success) showNotif('✅ ' + (result.message || 'Berhasil!'), 'success');
+      else showNotif('⚠️ ' + (result.message || 'Ada masalah'), 'error');
     } else {
-      await fetch(API, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: dataStr
-      });
+      await fetch(API, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: dataStr });
       showNotif('✅ Data terkirim!', 'success');
     }
     setTimeout(loadAllData, 2000);
@@ -665,13 +631,11 @@ function renderDashboard() {
     '<div class="card card-warning"><div class="card-value">' + s.tokoLoss.inProcess + '</div><div class="card-label">In Process</div></div>' +
     '<div class="card card-info"><div class="card-value">' + (s.noo.nooActive || 0) + '</div><div class="card-label">NOO Active</div></div>' +
     '<div class="card card-purple"><div class="card-value">' + s.tokoLoss.recoveryRate + '%</div><div class="card-label">Recovery Rate</div></div>';
-
   var rate = s.tokoLoss.recoveryRate;
   var bar = document.getElementById('progressRecovery');
   bar.style.width = rate + '%';
   bar.textContent = rate + '%';
   bar.className = 'progress-bar-fill ' + (rate >= 70 ? 'progress-green' : rate >= 40 ? 'progress-orange' : 'progress-red');
-
   var ew = appData.earlyWarning || [];
   var critical = ew.filter(function(r) { return String(r.Status || '').indexOf('Critical') > -1 || String(r.Status || '').indexOf('Almost') > -1; });
   var alertGrid = document.getElementById('alertGrid');
@@ -687,7 +651,7 @@ function renderDashboard() {
 }
 
 // ============================================
-// RENDER TABLES (+ HK + Pola)
+// RENDER TABLES
 // ============================================
 function renderTokoLoss() {
   document.getElementById('tokoLossTable').innerHTML = makeTable(appData.tokoLoss || [], ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Kategori Loss','Alasan Loss','Status']);
@@ -698,20 +662,11 @@ function renderNOO() {
 function renderWarning() {
   document.getElementById('warningTable').innerHTML = makeTable(appData.earlyWarning || [], ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Hari Sejak Last Order','Status','Action Required']);
 }
-
 function renderLeaderboard() {
   var data = appData.leaderboard || [];
   var medals = ['🥇','🥈','🥉','4️⃣'];
   document.getElementById('leaderboardList').innerHTML = data.map(function(item, i) {
-    return '<div class="leaderboard-item">' +
-      '<div class="lb-rank">' + (medals[i] || (i+1)) + '</div>' +
-      '<div class="lb-info">' +
-        '<div class="lb-name">' + (item.Salesman || '-') + '</div>' +
-        '<div class="lb-code">' + (item['Kode Salesman'] || '') + '</div>' +
-        '<div class="lb-points">Recovery: ' + (item['Poin Recovery (10/toko)'] || 0) + ' | NOO: ' + (item['Poin NOO (15/toko)'] || 0) + ' | EC: ' + (item['Poin EC Bonus'] || 0) + '</div>' +
-      '</div>' +
-      '<div class="lb-score">' + (item['Total Poin'] || 0) + ' pts</div>' +
-    '</div>';
+    return '<div class="leaderboard-item"><div class="lb-rank">' + (medals[i] || (i+1)) + '</div><div class="lb-info"><div class="lb-name">' + (item.Salesman || '-') + '</div><div class="lb-code">' + (item['Kode Salesman'] || '') + '</div><div class="lb-points">Recovery: ' + (item['Poin Recovery (10/toko)'] || 0) + ' | NOO: ' + (item['Poin NOO (15/toko)'] || 0) + ' | EC: ' + (item['Poin EC Bonus'] || 0) + '</div></div><div class="lb-score">' + (item['Total Poin'] || 0) + ' pts</div></div>';
   }).join('');
 }
 
@@ -756,12 +711,10 @@ function showFormTab(id, btn) {
 async function submitDaily(e) {
   e.preventDefault();
   var kodeSalesman = gv('dr-sales');
-  var namaSalesman = getSalesmanName(kodeSalesman);
-  
   await postData('addDailyReport', {
     tanggal: gv('dr-tgl'),
     kodeSalesman: kodeSalesman,
-    salesman: namaSalesman,
+    salesman: getSalesmanName(kodeSalesman),
     totalKunjungan: parseInt(gv('dr-visit')) || 0,
     effectiveCall: parseInt(gv('dr-ec')) || 0,
     tokoLossVisit: parseInt(gv('dr-loss')) || 0,
@@ -782,19 +735,16 @@ async function submitDaily(e) {
 async function submitRevisit(e) {
   e.preventDefault();
   var kodeToko = gv('rv-kode').trim();
-  
   var toko = appData.tokoLoss || [];
   var found = toko.find(function(t) { return t['Kode Toko'] === kodeToko; });
-  
   if (!found) {
     showNotif('❌ Kode toko "' + kodeToko + '" tidak ditemukan!', 'error');
     var statusMsg = document.getElementById('rv-status-msg');
     statusMsg.style.display = 'block';
     statusMsg.style.color = '#c62828';
-    statusMsg.textContent = '❌ Kode "' + kodeToko + '" tidak ada. Tersedia: ' + toko.map(function(t){return t['Kode Toko']}).join(', ');
+    statusMsg.textContent = '❌ Tidak ada. Tersedia: ' + toko.map(function(t){return t['Kode Toko']}).join(', ');
     return;
   }
-  
   await postData('updateTokoLoss', {
     kodeToko: kodeToko,
     revisitKe: parseInt(gv('rv-ke')),
@@ -808,13 +758,11 @@ async function submitRevisit(e) {
 }
 
 // ============================================
-// SUBMIT NOO (+ HK + Pola)
+// SUBMIT NOO
 // ============================================
 async function submitNOO(e) {
   e.preventDefault();
   var kodeSalesman = gv('noo-sales');
-  var namaSalesman = getSalesmanName(kodeSalesman);
-  
   await postData('addNOO', {
     namaToko: gv('noo-nama'),
     alamat: gv('noo-alamat'),
@@ -823,7 +771,7 @@ async function submitNOO(e) {
     hk: gv('noo-hk'),
     pola: gv('noo-pola'),
     kodeSalesman: kodeSalesman,
-    salesman: namaSalesman,
+    salesman: getSalesmanName(kodeSalesman),
     tglCanvassing: gv('noo-tgl'),
     keterangan: gv('noo-ket')
   });
@@ -852,7 +800,7 @@ function getGPS() {
     function(err) {
       console.error('GPS error:', err);
       var msg = '';
-      if (err.code === 1) msg = '❌ GPS diblokir. Klik 🔒 di URL bar → izinkan Location → Refresh';
+      if (err.code === 1) msg = '❌ GPS diblokir. Klik 🔒 di URL → izinkan Location → Refresh';
       else if (err.code === 2) msg = '❌ GPS tidak tersedia';
       else if (err.code === 3) msg = '⏱️ GPS timeout. Refresh halaman';
       else msg = '❌ GPS error';
@@ -873,7 +821,7 @@ function retryGPS() {
 }
 
 // ============================================
-// FOTO - CAMERA
+// CAMERA
 // ============================================
 function openCamera() {
   if (!photoData.gps.lat) {
@@ -891,7 +839,7 @@ function openCamera() {
           document.getElementById('fotoInput').click();
         },
         function(err) {
-          showNotif('❌ GPS wajib untuk foto! Klik 🔒 di URL → izinkan Location → Refresh', 'error');
+          showNotif('❌ GPS wajib! Klik 🔒 di URL → izinkan Location → Refresh', 'error');
         },
         { enableHighAccuracy: true, timeout: 10000 }
       );
@@ -904,12 +852,11 @@ function openCamera() {
 }
 
 // ============================================
-// FOTO - HANDLE & VALIDATE
+// HANDLE PHOTO
 // ============================================
 function handlePhoto(e) {
   var file = e.target.files[0];
   if (!file) return;
-
   photoData.timestamp = new Date();
   var fileAge = (Date.now() - file.lastModified) / 1000;
   var isRecent = fileAge < 300;
@@ -925,7 +872,7 @@ function handlePhoto(e) {
     '<div class="val-item ' + (isImage ? 'passed' : 'failed') + '"><span>' + (isImage ? '✅' : '⚠️') + '</span> Format ' + file.type + '</div>';
 
   if (!isRecent || !hasGPS || !sizeOK) {
-    showNotif('❌ Foto ditolak! Pastikan GPS aktif & foto baru dari kamera.', 'error');
+    showNotif('❌ Foto ditolak! Pastikan GPS aktif & foto baru.', 'error');
     return;
   }
 
@@ -943,7 +890,6 @@ function handlePhoto(e) {
       canvas.width = w;
       canvas.height = h;
       ctx.drawImage(img, 0, 0, w, h);
-
       ctx.fillStyle = 'rgba(0,0,0,0.7)';
       ctx.fillRect(0, h-50, w, 50);
       ctx.fillStyle = '#fff';
@@ -951,7 +897,6 @@ function handlePhoto(e) {
       ctx.fillText('WIN BACK STORE | ' + kodeSalesman + ' (' + namaSalesman + ') | ' + photoData.timestamp.toLocaleString('id-ID'), 8, h-30);
       ctx.font = '10px Arial';
       ctx.fillText('GPS: ' + (photoData.gps.lat || '-') + ', ' + (photoData.gps.long || '-'), 8, h-12);
-
       photoData.base64 = canvas.toDataURL('image/jpeg', 0.7).split(',')[1];
       document.getElementById('previewArea').style.display = 'block';
       document.getElementById('uploadArea').style.display = 'none';
@@ -964,60 +909,39 @@ function handlePhoto(e) {
 }
 
 // ============================================
-// ✅ CEK JARAK DARI TOKO (INFO ONLY - NON BLOCKING)
+// CEK JARAK (INFO ONLY - NON BLOCKING)
 // ============================================
 async function checkDistance(kodeToko) {
   if (!photoData.gps.lat || !kodeToko) return;
-  
   var distPanel = document.getElementById('distancePanel');
   var distResult = document.getElementById('distanceResult');
   distPanel.style.display = 'block';
   distResult.innerHTML = '<small>📍 Mengecek jarak...</small>';
-  
   try {
     var res = await fetch(API + '?action=checkRadius&kodeToko=' + encodeURIComponent(kodeToko) + '&lat=' + photoData.gps.lat + '&long=' + photoData.gps.long);
     var data = await res.json();
-    
     if (data.needRegister) {
-      // Toko belum terdaftar lokasinya
       distResult.innerHTML = '<div class="distance-result distance-medium">📍 Lokasi toko belum terdaftar. GPS kamu akan disimpan sebagai lokasi toko ini.</div>';
     } else {
       var distance = data.distance || 0;
-      var cls = '';
-      var icon = '';
-      
-      if (distance <= 100) {
-        cls = 'distance-close';
-        icon = '✅';
-      } else if (distance <= 500) {
-        cls = 'distance-medium';
-        icon = '⚠️';
-      } else {
-        cls = 'distance-far';
-        icon = '📍';
-      }
-      
-      distResult.innerHTML = '<div class="distance-result ' + cls + '">' +
-        icon + ' Jarak kamu dari toko: <strong>' + distance + ' meter</strong>' +
-        '<br><small>Koordinat toko terdaftar | Info untuk supervisor</small>' +
-      '</div>';
+      var cls = distance <= 100 ? 'distance-close' : distance <= 500 ? 'distance-medium' : 'distance-far';
+      var icon = distance <= 100 ? '✅' : distance <= 500 ? '⚠️' : '📍';
+      distResult.innerHTML = '<div class="distance-result ' + cls + '">' + icon + ' Jarak kamu dari toko: <strong>' + distance + ' meter</strong><br><small>Info untuk supervisor</small></div>';
     }
   } catch(err) {
-    distResult.innerHTML = '<div class="distance-result distance-medium">⚠️ Tidak bisa cek jarak (offline/error)</div>';
+    distResult.innerHTML = '<div class="distance-result distance-medium">⚠️ Tidak bisa cek jarak</div>';
   }
 }
 
 // ============================================
-// SUBMIT FOTO (✅ Non-blocking GPS - hanya info jarak)
+// SUBMIT FOTO (NON-BLOCKING GPS)
 // ============================================
 async function submitFoto(e) {
   e.preventDefault();
   if (!photoData.base64) { showNotif('❌ Ambil foto dulu!', 'error'); return; }
-
   var kodeToko = gv('foto-toko').trim();
   var kodeSalesman = gv('foto-sales');
   var namaSalesman = getSalesmanName(kodeSalesman);
-  
   if (!kodeToko) { showNotif('❌ Pilih toko dulu!', 'error'); return; }
   if (!kodeSalesman) { showNotif('❌ Pilih salesman dulu!', 'error'); return; }
 
@@ -1025,10 +949,10 @@ async function submitFoto(e) {
   var foundToko = toko.find(function(t) { return t['Kode Toko'] === kodeToko; });
   var namaToko = foundToko ? foundToko['Nama Toko'] : kodeToko;
 
-  // ✅ Cek jarak (INFO ONLY - tidak memblokir upload)
+  // Cek jarak (INFO ONLY - tidak memblokir)
   await checkDistance(kodeToko);
 
-  // Upload foto (SELALU bisa upload, tidak diblokir jarak)
+  // Upload foto (SELALU bisa, tidak diblokir jarak)
   showNotif('⏳ Mengupload foto...', 'loading');
   try {
     await fetch(API, {
@@ -1070,4 +994,31 @@ function resetFoto() {
   photoData.timestamp = null;
   document.getElementById('previewArea').style.display = 'none';
   document.getElementById('uploadArea').style.display = 'block';
-  document.getElementById('fotoInput').value
+  document.getElementById('fotoInput').value = '';
+  document.getElementById('btnFoto').disabled = true;
+  document.getElementById('valPanel').style.display = 'none';
+  document.getElementById('distancePanel').style.display = 'none';
+}
+
+// ============================================
+// HELPERS
+// ============================================
+function getSalesmanName(kodeSalesman) {
+  if (!kodeSalesman) return '';
+  var master = appData.masterSalesman || [];
+  var found = master.find(function(s) { return s['Kode Salesman'] === kodeSalesman; });
+  return found ? found['Nama Salesman'] : kodeSalesman;
+}
+
+function gv(id) { var el = document.getElementById(id); return el ? el.value : ''; }
+function setToday(id) { var el = document.getElementById(id); if (el) el.value = new Date().toISOString().split('T')[0]; }
+function showLoading(show) { document.getElementById('loadingOverlay').className = show ? 'loading-overlay' : 'loading-overlay hidden'; }
+function showNotif(msg, type) {
+  var n = document.getElementById('notification');
+  document.getElementById('notifMsg').textContent = msg;
+  n.className = 'notification ' + type + ' show';
+  if (type !== 'loading') setTimeout(function() { n.classList.remove('show'); }, 4000);
+}
+</script>
+</body>
+</html>
