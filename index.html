@@ -108,6 +108,7 @@
     .badge-red { background: #ffebee; color: #c62828; }
     .badge-green { background: #e8f5e9; color: #2e7d32; }
     .badge-yellow { background: #fff8e1; color: #f57f17; }
+    .badge-blue { background: #e3f2fd; color: #1565c0; }
     .alert-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -203,10 +204,11 @@
     .gps-section { background: #f5f5f5; border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 0.8rem; }
     .gps-success { color: #2e7d32; }
     .gps-error { color: #c62828; }
-    .radius-panel { background: #f5f5f5; border-radius: 10px; padding: 12px; margin: 10px 0; }
-    .radius-result { padding: 10px; border-radius: 8px; font-size: 0.85rem; margin-top: 8px; }
-    .radius-pass { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #4caf50; }
-    .radius-fail { background: #ffebee; color: #c62828; border-left: 4px solid #f44336; }
+    .distance-panel { background: #f5f5f5; border-radius: 10px; padding: 12px; margin: 10px 0; }
+    .distance-result { padding: 10px; border-radius: 8px; font-size: 0.85rem; margin-top: 8px; }
+    .distance-close { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #4caf50; }
+    .distance-medium { background: #fff8e1; color: #f57f17; border-left: 4px solid #ffc107; }
+    .distance-far { background: #ffebee; color: #c62828; border-left: 4px solid #f44336; }
     .notification {
       position: fixed;
       top: 20px;
@@ -261,6 +263,7 @@
     .search-item .code { font-weight: 600; }
     .search-item .detail { color: #888; font-size: 0.7rem; }
     .status-msg { display: none; margin-top: 4px; font-size: 0.75rem; }
+    .hk-pola-badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; background: #e3f2fd; color: #1565c0; margin-right: 3px; }
     @media (max-width: 768px) {
       .cards-grid { grid-template-columns: repeat(2, 1fr); }
       .form-grid { grid-template-columns: 1fr; }
@@ -384,7 +387,7 @@
       </form>
     </div>
 
-    <!-- NOO FORM -->
+    <!-- NOO FORM (✅ + HK + Pola) -->
     <div class="form-content" id="form-noo-form">
       <form id="nooForm" onsubmit="submitNOO(event)">
         <div class="form-grid">
@@ -392,11 +395,35 @@
           <div class="form-group"><label>Alamat</label><input type="text" id="noo-alamat" required></div>
           <div class="form-group"><label>Pemilik</label><input type="text" id="noo-pemilik" required></div>
           <div class="form-group"><label>No HP</label><input type="tel" id="noo-hp"></div>
+          <div class="form-group"><label>📅 HK (Hari Kunjungan)</label>
+            <select id="noo-hk" required>
+              <option value="">--Pilih Hari--</option>
+              <option value="Senin">Senin</option>
+              <option value="Selasa">Selasa</option>
+              <option value="Rabu">Rabu</option>
+              <option value="Kamis">Kamis</option>
+              <option value="Jumat">Jumat</option>
+              <option value="Sabtu">Sabtu</option>
+            </select>
+          </div>
+          <div class="form-group"><label>🔄 Pola Kunjungan</label>
+            <select id="noo-pola" required>
+              <option value="">--Pilih Pola--</option>
+              <option value="1234">1234 (Setiap Minggu)</option>
+              <option value="W1W3">W1W3 (Minggu 1 & 3)</option>
+              <option value="W2W4">W2W4 (Minggu 2 & 4)</option>
+              <option value="W1">W1 (Minggu 1 saja)</option>
+              <option value="W2">W2 (Minggu 2 saja)</option>
+              <option value="W3">W3 (Minggu 3 saja)</option>
+              <option value="W4">W4 (Minggu 4 saja)</option>
+            </select>
+          </div>
           <div class="form-group"><label>Salesman</label>
             <select id="noo-sales" required></select>
           </div>
-          <div class="form-group"><label>Tanggal</label><input type="date" id="noo-tgl" required></div>
+          <div class="form-group"><label>Tanggal Canvassing</label><input type="date" id="noo-tgl" required></div>
         </div>
+        <div class="form-group"><label>Keterangan</label><textarea id="noo-ket" rows="2" placeholder="Catatan tambahan..."></textarea></div>
         <button type="submit" class="btn-submit">💾 Simpan NOO</button>
       </form>
     </div>
@@ -444,9 +471,10 @@
         <div id="valItems" style="margin-top:8px;"></div>
       </div>
 
-      <div class="radius-panel" id="radiusPanel" style="display:none;">
-        <strong>📍 Radius Check</strong>
-        <div id="radiusResult" style="margin-top:8px;"></div>
+      <!-- ✅ DISTANCE INFO PANEL (non-blocking, hanya info) -->
+      <div class="distance-panel" id="distancePanel" style="display:none;">
+        <strong>📍 Jarak dari Toko</strong>
+        <div id="distanceResult" style="margin-top:8px;"></div>
       </div>
 
       <div class="form-group" style="margin-top:10px;"><label>Keterangan</label><textarea id="foto-ket" rows="2" placeholder="Catatan..."></textarea></div>
@@ -460,7 +488,7 @@
 // ============================================
 // CONFIG
 // ============================================
-var API = 'https://script.google.com/macros/s/AKfycbxQb_2AeXHK7dfX63UOLxy_-9trkfvIWGd_t0u2vmIJGTkbjnmHTQ0ZLfX7mYH0kU3BHA/exec';
+var API = 'https://script.google.com/macros/s/AKfycbyDACDe4wK-muAxWnpL5duGsTF3XEDrhkdknjymFcRRe-yBhC8NVK-v93NEVfVF2PzL/exec';
 var appData = {};
 var photoData = { base64: null, timestamp: null, gps: { lat: null, long: null } };
 
@@ -499,7 +527,7 @@ async function loadAllData() {
 }
 
 // ============================================
-// LOAD SALESMAN DROPDOWNS (dari Master_Salesman)
+// LOAD SALESMAN DROPDOWNS
 // ============================================
 function loadSalesmanDropdowns() {
   var master = appData.masterSalesman || [];
@@ -518,7 +546,7 @@ function loadSalesmanDropdowns() {
 }
 
 // ============================================
-// SEARCH TOKO (untuk Revisit & Foto)
+// SEARCH TOKO (+ HK + Pola info)
 // ============================================
 function searchToko(query, prefix) {
   var dropdown = document.getElementById(prefix + '-dropdown');
@@ -558,9 +586,14 @@ function searchToko(query, prefix) {
     else if (status.indexOf('Belum') > -1) badge = '🔴';
     else if (status.indexOf('Tidak Bisa') > -1) badge = '⚫';
     
+    var hkPola = '';
+    if (t.HK || t.Pola) {
+      hkPola = ' | 📅 ' + (t.HK || '-') + ' (' + (t.Pola || '-') + ')';
+    }
+    
     return '<div class="search-item" onclick="selectToko(\'' + t['Kode Toko'] + '\', \'' + (t['Nama Toko'] || '').replace(/'/g, "\\'") + '\', \'' + prefix + '\')">' +
       '<span class="code">' + t['Kode Toko'] + '</span> - ' + t['Nama Toko'] + ' ' + badge +
-      '<br><span class="detail">' + (t['Kode Salesman'] || '') + ' (' + (t.Salesman || '') + ') | ' + (t['Alasan Loss'] || '') + '</span>' +
+      '<br><span class="detail">' + (t['Kode Salesman'] || '') + ' (' + (t.Salesman || '') + ')' + hkPola + ' | ' + (t['Alasan Loss'] || '') + '</span>' +
     '</div>';
   }).join('');
   
@@ -647,22 +680,23 @@ function renderDashboard() {
   } else {
     alertGrid.innerHTML = critical.map(function(t) {
       var cls = String(t.Status).indexOf('Almost') > -1 ? 'alert-almost' : 'alert-critical';
-      return '<div class="alert-card ' + cls + '"><strong>' + (t['Nama Toko'] || '-') + '</strong><br><small>' + (t['Kode Salesman'] || '') + ' (' + (t.Salesman || '-') + ')</small> | ' + (t['Hari Sejak Last Order'] || '?') + ' hari<br><em>' + (t['Action Required'] || '-') + '</em></div>';
+      var hkInfo = (t.HK || t.Pola) ? '<br><small>📅 ' + (t.HK || '-') + ' | ' + (t.Pola || '-') + '</small>' : '';
+      return '<div class="alert-card ' + cls + '"><strong>' + (t['Nama Toko'] || '-') + '</strong><br><small>' + (t['Kode Salesman'] || '') + ' (' + (t.Salesman || '-') + ')</small> | ' + (t['Hari Sejak Last Order'] || '?') + ' hari' + hkInfo + '<br><em>' + (t['Action Required'] || '-') + '</em></div>';
     }).join('');
   }
 }
 
 // ============================================
-// RENDER TABLES
+// RENDER TABLES (+ HK + Pola)
 // ============================================
 function renderTokoLoss() {
-  document.getElementById('tokoLossTable').innerHTML = makeTable(appData.tokoLoss || [], ['No','Kode Toko','Nama Toko','Kode Salesman','Salesman','Kategori Loss','Alasan Loss','Status']);
+  document.getElementById('tokoLossTable').innerHTML = makeTable(appData.tokoLoss || [], ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Kategori Loss','Alasan Loss','Status']);
 }
 function renderNOO() {
-  document.getElementById('nooTable').innerHTML = makeTable(appData.noo || [], ['No','Kode NOO','Nama Toko','Kode Salesman','Salesman','Tgl Canvassing','Status NOO']);
+  document.getElementById('nooTable').innerHTML = makeTable(appData.noo || [], ['No','Kode NOO','Nama Toko','HK','Pola','Kode Salesman','Salesman','Tgl Canvassing','Status NOO']);
 }
 function renderWarning() {
-  document.getElementById('warningTable').innerHTML = makeTable(appData.earlyWarning || [], ['No','Kode Toko','Nama Toko','Kode Salesman','Salesman','Hari Sejak Last Order','Status','Action Required']);
+  document.getElementById('warningTable').innerHTML = makeTable(appData.earlyWarning || [], ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Hari Sejak Last Order','Status','Action Required']);
 }
 
 function renderLeaderboard() {
@@ -690,6 +724,10 @@ function makeTable(data, cols) {
       if (val.indexOf('Recovery') > -1 && val.indexOf('Tidak') === -1) val = '<span class="badge badge-green">' + val + '</span>';
       else if (val.indexOf('Critical') > -1 || val.indexOf('Belum') > -1) val = '<span class="badge badge-red">' + val + '</span>';
       else if (val.indexOf('Warning') > -1 || val.indexOf('Proses') > -1) val = '<span class="badge badge-yellow">' + val + '</span>';
+      else if (val.indexOf('Active') > -1) val = '<span class="badge badge-green">' + val + '</span>';
+      else if (val.indexOf('Sehat') > -1) val = '<span class="badge badge-green">' + val + '</span>';
+      if (c === 'HK' && val !== '-') val = '<span class="hk-pola-badge">📅 ' + val + '</span>';
+      if (c === 'Pola' && val !== '-') val = '<span class="hk-pola-badge">🔄 ' + val + '</span>';
       return '<td>' + val + '</td>';
     }).join('') + '</tr>';
   });
@@ -713,7 +751,7 @@ function showFormTab(id, btn) {
 }
 
 // ============================================
-// SUBMIT DAILY REPORT (✅ Kode Salesman)
+// SUBMIT DAILY REPORT
 // ============================================
 async function submitDaily(e) {
   e.preventDefault();
@@ -739,13 +777,12 @@ async function submitDaily(e) {
 }
 
 // ============================================
-// SUBMIT REVISIT (✅ Search + Validasi)
+// SUBMIT REVISIT
 // ============================================
 async function submitRevisit(e) {
   e.preventDefault();
   var kodeToko = gv('rv-kode').trim();
   
-  // Validasi kode toko
   var toko = appData.tokoLoss || [];
   var found = toko.find(function(t) { return t['Kode Toko'] === kodeToko; });
   
@@ -771,7 +808,7 @@ async function submitRevisit(e) {
 }
 
 // ============================================
-// SUBMIT NOO (✅ Kode Salesman)
+// SUBMIT NOO (+ HK + Pola)
 // ============================================
 async function submitNOO(e) {
   e.preventDefault();
@@ -783,9 +820,12 @@ async function submitNOO(e) {
     alamat: gv('noo-alamat'),
     namaPemilik: gv('noo-pemilik'),
     noHP: gv('noo-hp'),
+    hk: gv('noo-hk'),
+    pola: gv('noo-pola'),
     kodeSalesman: kodeSalesman,
     salesman: namaSalesman,
-    tglCanvassing: gv('noo-tgl')
+    tglCanvassing: gv('noo-tgl'),
+    keterangan: gv('noo-ket')
   });
   document.getElementById('nooForm').reset();
   setToday('noo-tgl');
@@ -924,7 +964,51 @@ function handlePhoto(e) {
 }
 
 // ============================================
-// SUBMIT FOTO (✅ Kode Salesman)
+// ✅ CEK JARAK DARI TOKO (INFO ONLY - NON BLOCKING)
+// ============================================
+async function checkDistance(kodeToko) {
+  if (!photoData.gps.lat || !kodeToko) return;
+  
+  var distPanel = document.getElementById('distancePanel');
+  var distResult = document.getElementById('distanceResult');
+  distPanel.style.display = 'block';
+  distResult.innerHTML = '<small>📍 Mengecek jarak...</small>';
+  
+  try {
+    var res = await fetch(API + '?action=checkRadius&kodeToko=' + encodeURIComponent(kodeToko) + '&lat=' + photoData.gps.lat + '&long=' + photoData.gps.long);
+    var data = await res.json();
+    
+    if (data.needRegister) {
+      // Toko belum terdaftar lokasinya
+      distResult.innerHTML = '<div class="distance-result distance-medium">📍 Lokasi toko belum terdaftar. GPS kamu akan disimpan sebagai lokasi toko ini.</div>';
+    } else {
+      var distance = data.distance || 0;
+      var cls = '';
+      var icon = '';
+      
+      if (distance <= 100) {
+        cls = 'distance-close';
+        icon = '✅';
+      } else if (distance <= 500) {
+        cls = 'distance-medium';
+        icon = '⚠️';
+      } else {
+        cls = 'distance-far';
+        icon = '📍';
+      }
+      
+      distResult.innerHTML = '<div class="distance-result ' + cls + '">' +
+        icon + ' Jarak kamu dari toko: <strong>' + distance + ' meter</strong>' +
+        '<br><small>Koordinat toko terdaftar | Info untuk supervisor</small>' +
+      '</div>';
+    }
+  } catch(err) {
+    distResult.innerHTML = '<div class="distance-result distance-medium">⚠️ Tidak bisa cek jarak (offline/error)</div>';
+  }
+}
+
+// ============================================
+// SUBMIT FOTO (✅ Non-blocking GPS - hanya info jarak)
 // ============================================
 async function submitFoto(e) {
   e.preventDefault();
@@ -937,27 +1021,14 @@ async function submitFoto(e) {
   if (!kodeToko) { showNotif('❌ Pilih toko dulu!', 'error'); return; }
   if (!kodeSalesman) { showNotif('❌ Pilih salesman dulu!', 'error'); return; }
 
-  // Validasi kode toko
   var toko = appData.tokoLoss || [];
   var foundToko = toko.find(function(t) { return t['Kode Toko'] === kodeToko; });
   var namaToko = foundToko ? foundToko['Nama Toko'] : kodeToko;
 
-  // Radius check
-  document.getElementById('radiusPanel').style.display = 'block';
-  try {
-    var res = await fetch(API + '?action=checkRadius&kodeToko=' + encodeURIComponent(kodeToko) + '&lat=' + photoData.gps.lat + '&long=' + photoData.gps.long);
-    var radius = await res.json();
-    if (!radius.valid && !radius.needRegister) {
-      document.getElementById('radiusResult').innerHTML = '<div class="radius-result radius-fail">❌ DITOLAK - Jarak ' + radius.distance + 'm (max ' + radius.radius + 'm)</div>';
-      showNotif('❌ Terlalu jauh dari toko!', 'error');
-      return;
-    }
-    document.getElementById('radiusResult').innerHTML = '<div class="radius-result radius-pass">✅ ' + (radius.message || 'OK') + '</div>';
-  } catch(err) {
-    document.getElementById('radiusResult').innerHTML = '<div class="radius-result radius-pass">⚠️ Radius check skipped</div>';
-  }
+  // ✅ Cek jarak (INFO ONLY - tidak memblokir upload)
+  await checkDistance(kodeToko);
 
-  // Upload foto
+  // Upload foto (SELALU bisa upload, tidak diblokir jarak)
   showNotif('⏳ Mengupload foto...', 'loading');
   try {
     await fetch(API, {
@@ -999,34 +1070,4 @@ function resetFoto() {
   photoData.timestamp = null;
   document.getElementById('previewArea').style.display = 'none';
   document.getElementById('uploadArea').style.display = 'block';
-  document.getElementById('fotoInput').value = '';
-  document.getElementById('btnFoto').disabled = true;
-  document.getElementById('valPanel').style.display = 'none';
-  document.getElementById('radiusPanel').style.display = 'none';
-}
-
-// ============================================
-// HELPERS
-// ============================================
-function getSalesmanName(kodeSalesman) {
-  if (!kodeSalesman) return '';
-  var master = appData.masterSalesman || [];
-  var found = master.find(function(s) { return s['Kode Salesman'] === kodeSalesman; });
-  return found ? found['Nama Salesman'] : kodeSalesman;
-}
-
-function gv(id) { var el = document.getElementById(id); return el ? el.value : ''; }
-function setToday(id) { var el = document.getElementById(id); if (el) el.value = new Date().toISOString().split('T')[0]; }
-function showLoading(show) { document.getElementById('loadingOverlay').className = show ? 'loading-overlay' : 'loading-overlay hidden'; }
-function showNotif(msg, type) {
-  var n = document.getElementById('notification');
-  document.getElementById('notifMsg').textContent = msg;
-  n.className = 'notification ' + type + ' show';
-  if (type !== 'loading') setTimeout(function() { n.classList.remove('show'); }, 4000);
-}
-
-// Auto refresh setiap 5 menit
-setInterval(loadAllData, 300000);
-</script>
-</body>
-</html>
+  document.getElementById('fotoInput').value
