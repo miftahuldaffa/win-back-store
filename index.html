@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -69,34 +70,12 @@
     .card-purple { background: #f3e5f5; color: #6a1b9a; }
     .progress-section { margin: 15px 0; }
     .progress-label { font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
-    .progress-bar-bg {
-      height: 24px;
-      background: #e0e0e0;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .progress-bar-fill {
-      height: 100%;
-      border-radius: 12px;
-      transition: width 0.8s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: bold;
-      color: white;
-    }
+    .progress-bar-bg { height: 24px; background: #e0e0e0; border-radius: 12px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; border-radius: 12px; transition: width 0.8s ease; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; color: white; }
     .progress-green { background: linear-gradient(90deg, #4caf50, #8bc34a); }
     .progress-orange { background: linear-gradient(90deg, #ff9800, #ffc107); }
     .progress-red { background: linear-gradient(90deg, #f44336, #ff5722); }
-    .section {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      display: none;
-    }
+    .section { background: white; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: none; }
     .section.active { display: block; }
     .section h2 { font-size: 1.1rem; margin-bottom: 15px; }
     .table-container { overflow-x: auto; }
@@ -109,28 +88,12 @@
     .badge-green { background: #e8f5e9; color: #2e7d32; }
     .badge-yellow { background: #fff8e1; color: #f57f17; }
     .badge-blue { background: #e3f2fd; color: #1565c0; }
-    .alert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 10px;
-    }
-    .alert-card {
-      padding: 12px;
-      border-radius: 8px;
-      border-left: 4px solid;
-      font-size: 0.85rem;
-    }
+    .alert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
+    .alert-card { padding: 12px; border-radius: 8px; border-left: 4px solid; font-size: 0.85rem; }
     .alert-critical { background: #ffebee; border-color: #f44336; }
     .alert-warning { background: #fff8e1; border-color: #ffc107; }
     .alert-almost { background: #eceff1; border-color: #212121; }
-    .leaderboard-item {
-      display: flex;
-      align-items: center;
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 8px;
-      background: #f9f9f9;
-    }
+    .leaderboard-item { display: flex; align-items: center; padding: 12px; border-radius: 10px; margin-bottom: 8px; background: #f9f9f9; }
     .leaderboard-item:first-child { background: linear-gradient(135deg, #fff8e1, #fffde7); border: 1px solid #ffd54f; }
     .lb-rank { font-size: 1.5rem; width: 40px; text-align: center; }
     .lb-info { flex: 1; margin-left: 10px; }
@@ -139,61 +102,18 @@
     .lb-points { font-size: 0.8rem; color: #666; }
     .lb-score { font-size: 1.3rem; font-weight: bold; color: #1a237e; }
     .form-tabs { display: flex; gap: 0; border-bottom: 2px solid #e0e0e0; margin-bottom: 15px; overflow-x: auto; }
-    .form-tab-btn {
-      padding: 10px 15px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #666;
-      border-bottom: 3px solid transparent;
-      white-space: nowrap;
-    }
+    .form-tab-btn { padding: 10px 15px; border: none; background: none; cursor: pointer; font-size: 0.8rem; font-weight: 500; color: #666; border-bottom: 3px solid transparent; white-space: nowrap; }
     .form-tab-btn.active { color: #1a237e; border-bottom-color: #1a237e; }
     .form-content { display: none; }
     .form-content.active { display: block; }
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-bottom: 12px;
-    }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 12px; }
     .form-group label { display: block; font-size: 0.75rem; font-weight: 600; color: #555; margin-bottom: 4px; }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 0.85rem;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: #1a237e;
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(26,35,126,0.1);
-    }
-    .btn-submit {
-      background: linear-gradient(135deg, #1a237e, #4a148c);
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 10px;
-    }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.85rem; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #1a237e; outline: none; box-shadow: 0 0 0 3px rgba(26,35,126,0.1); }
+    .btn-submit { background: linear-gradient(135deg, #1a237e, #4a148c); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 10px; }
     .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
     .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
-    .upload-area {
-      border: 2px solid #1a237e;
-      border-radius: 12px;
-      padding: 30px;
-      text-align: center;
-      background: linear-gradient(135deg, #e8eaf6, #f3e5f5);
-      margin-bottom: 15px;
-      cursor: pointer;
-    }
+    .upload-area { border: 2px solid #1a237e; border-radius: 12px; padding: 30px; text-align: center; background: linear-gradient(135deg, #e8eaf6, #f3e5f5); margin-bottom: 15px; cursor: pointer; }
     .upload-area .icon { font-size: 2.5rem; }
     .upload-area .text { margin-top: 8px; font-size: 0.85rem; }
     .upload-area .warning { color: #d32f2f; font-weight: 600; font-size: 0.8rem; margin-top: 5px; }
@@ -209,65 +129,36 @@
     .distance-close { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #4caf50; }
     .distance-medium { background: #fff8e1; color: #f57f17; border-left: 4px solid #ffc107; }
     .distance-far { background: #ffebee; color: #c62828; border-left: 4px solid #f44336; }
-    .notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      z-index: 9999;
-      transform: translateX(120%);
-      transition: transform 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      max-width: 320px;
-    }
+    .notification { position: fixed; top: 20px; right: 20px; padding: 12px 20px; border-radius: 10px; font-size: 0.85rem; font-weight: 500; z-index: 9999; transform: translateX(120%); transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); max-width: 320px; }
     .notification.show { transform: translateX(0); }
     .notification.success { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #4caf50; }
     .notification.error { background: #ffebee; color: #c62828; border-left: 4px solid #f44336; }
     .notification.loading { background: #e3f2fd; color: #1565c0; border-left: 4px solid #2196f3; }
-    .loading-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(255,255,255,0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9998;
-    }
+    .loading-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; z-index: 9998; }
     .loading-overlay.hidden { display: none; }
     .spinner { font-size: 2rem; animation: spin 1s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .search-dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      max-height: 200px;
-      overflow-y: auto;
-      z-index: 50;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .search-item {
-      padding: 10px 12px;
-      cursor: pointer;
-      border-bottom: 1px solid #f0f0f0;
-      font-size: 0.8rem;
-    }
+    .search-dropdown { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-radius: 8px; max-height: 200px; overflow-y: auto; z-index: 50; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .search-item { padding: 10px 12px; cursor: pointer; border-bottom: 1px solid #f0f0f0; font-size: 0.8rem; }
     .search-item:hover { background: #f5f5f5; }
     .search-item .code { font-weight: 600; }
     .search-item .detail { color: #888; font-size: 0.7rem; }
     .status-msg { display: none; margin-top: 4px; font-size: 0.75rem; }
     .hk-pola-badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; background: #e3f2fd; color: #1565c0; margin-right: 3px; }
+    /* FILTER STYLES */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; padding: 12px; background: #f9f9f9; border-radius: 10px; align-items: center; }
+    .filter-bar select { padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.75rem; background: white; }
+    .filter-bar label { font-size: 0.7rem; font-weight: 600; color: #555; }
+    .filter-group { display: flex; flex-direction: column; gap: 2px; }
+    .btn-reset-filter { padding: 6px 12px; border: 1px solid #f44336; color: #f44336; background: white; border-radius: 6px; font-size: 0.75rem; cursor: pointer; }
+    .btn-reset-filter:hover { background: #ffebee; }
+    .filter-count { font-size: 0.75rem; color: #666; padding: 4px 8px; background: #e3f2fd; border-radius: 4px; }
     @media (max-width: 768px) {
       .cards-grid { grid-template-columns: repeat(2, 1fr); }
       .form-grid { grid-template-columns: 1fr; }
       .header h1 { font-size: 1.1rem; }
+      .filter-bar { gap: 6px; }
+      .filter-group { min-width: 80px; }
     }
   </style>
 </head>
@@ -303,17 +194,24 @@
     <div class="cards-grid" id="summaryCards"></div>
     <div class="progress-section">
       <div class="progress-label">Recovery Rate</div>
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill" id="progressRecovery" style="width:0%">0%</div>
-      </div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressRecovery" style="width:0%">0%</div></div>
     </div>
     <h3 style="margin-top:20px; font-size:0.95rem;">⚠️ Toko Perlu Perhatian</h3>
     <div class="alert-grid" id="alertGrid" style="margin-top:10px;"></div>
   </div>
 
-  <!-- TOKO LOSS -->
+  <!-- TOKO LOSS + FILTER -->
   <div class="section" id="sec-tokoloss">
     <h2>🔴 Database Toko Loss</h2>
+    <div class="filter-bar" id="filterLoss">
+      <div class="filter-group"><label>📅 HK</label><select id="fl-hk" onchange="applyFilterLoss()"><option value="">Semua</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option><option>Sabtu</option></select></div>
+      <div class="filter-group"><label>🔄 Pola</label><select id="fl-pola" onchange="applyFilterLoss()"><option value="">Semua</option><option>1234</option><option>W1W3</option><option>W2W4</option><option>W1</option><option>W2</option><option>W3</option><option>W4</option></select></div>
+      <div class="filter-group"><label>👤 Salesman</label><select id="fl-sls" onchange="applyFilterLoss()"><option value="">Semua</option></select></div>
+      <div class="filter-group"><label>📂 Kategori</label><select id="fl-kat" onchange="applyFilterLoss()"><option value="">Semua</option></select></div>
+      <div class="filter-group"><label>📌 Status</label><select id="fl-status" onchange="applyFilterLoss()"><option value="">Semua</option></select></div>
+      <button class="btn-reset-filter" onclick="resetFilterLoss()">✕ Reset</button>
+      <span class="filter-count" id="fl-count"></span>
+    </div>
     <div class="table-container" id="tokoLossTable"></div>
   </div>
 
@@ -323,9 +221,17 @@
     <div class="table-container" id="nooTable"></div>
   </div>
 
-  <!-- WARNING -->
+  <!-- WARNING + FILTER -->
   <div class="section" id="sec-warning">
     <h2>⚠️ Early Warning System</h2>
+    <div class="filter-bar" id="filterWarning">
+      <div class="filter-group"><label>📅 HK</label><select id="fw-hk" onchange="applyFilterWarning()"><option value="">Semua</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option><option>Sabtu</option></select></div>
+      <div class="filter-group"><label>🔄 Pola</label><select id="fw-pola" onchange="applyFilterWarning()"><option value="">Semua</option><option>1234</option><option>W1W3</option><option>W2W4</option><option>W1</option><option>W2</option><option>W3</option><option>W4</option></select></div>
+      <div class="filter-group"><label>👤 Salesman</label><select id="fw-sls" onchange="applyFilterWarning()"><option value="">Semua</option></select></div>
+      <div class="filter-group"><label>📌 Status</label><select id="fw-status" onchange="applyFilterWarning()"><option value="">Semua</option></select></div>
+      <button class="btn-reset-filter" onclick="resetFilterWarning()">✕ Reset</button>
+      <span class="filter-count" id="fw-count"></span>
+    </div>
     <div class="table-container" id="warningTable"></div>
   </div>
 
@@ -344,7 +250,6 @@
       <button class="form-tab-btn" onclick="showFormTab('noo-form', this)">🆕 NOO Baru</button>
     </div>
 
-    <!-- DAILY REPORT FORM -->
     <div class="form-content active" id="form-daily">
       <form id="dailyForm" onsubmit="submitDaily(event)">
         <div class="form-grid">
@@ -364,7 +269,6 @@
       </form>
     </div>
 
-    <!-- REVISIT FORM -->
     <div class="form-content" id="form-revisit">
       <form id="revisitForm" onsubmit="submitRevisit(event)">
         <div class="form-grid">
@@ -385,7 +289,6 @@
       </form>
     </div>
 
-    <!-- NOO FORM -->
     <div class="form-content" id="form-noo-form">
       <form id="nooForm" onsubmit="submitNOO(event)">
         <div class="form-grid">
@@ -393,33 +296,16 @@
           <div class="form-group"><label>Alamat</label><input type="text" id="noo-alamat" required></div>
           <div class="form-group"><label>Pemilik</label><input type="text" id="noo-pemilik" required></div>
           <div class="form-group"><label>No HP</label><input type="tel" id="noo-hp"></div>
-          <div class="form-group"><label>📅 HK (Hari Kunjungan)</label>
-            <select id="noo-hk" required>
-              <option value="">--Pilih Hari--</option>
-              <option value="Senin">Senin</option>
-              <option value="Selasa">Selasa</option>
-              <option value="Rabu">Rabu</option>
-              <option value="Kamis">Kamis</option>
-              <option value="Jumat">Jumat</option>
-              <option value="Sabtu">Sabtu</option>
-            </select>
+          <div class="form-group"><label>📅 HK</label>
+            <select id="noo-hk" required><option value="">--Pilih--</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option><option>Sabtu</option></select>
           </div>
-          <div class="form-group"><label>🔄 Pola Kunjungan</label>
-            <select id="noo-pola" required>
-              <option value="">--Pilih Pola--</option>
-              <option value="1234">1234 (Setiap Minggu)</option>
-              <option value="W1W3">W1W3 (Minggu 1 & 3)</option>
-              <option value="W2W4">W2W4 (Minggu 2 & 4)</option>
-              <option value="W1">W1 (Minggu 1 saja)</option>
-              <option value="W2">W2 (Minggu 2 saja)</option>
-              <option value="W3">W3 (Minggu 3 saja)</option>
-              <option value="W4">W4 (Minggu 4 saja)</option>
-            </select>
+          <div class="form-group"><label>🔄 Pola</label>
+            <select id="noo-pola" required><option value="">--Pilih--</option><option value="1234">1234</option><option value="W1W3">W1W3</option><option value="W2W4">W2W4</option><option value="W1">W1</option><option value="W2">W2</option><option value="W3">W3</option><option value="W4">W4</option></select>
           </div>
           <div class="form-group"><label>Salesman</label><select id="noo-sales" required></select></div>
-          <div class="form-group"><label>Tanggal Canvassing</label><input type="date" id="noo-tgl" required></div>
+          <div class="form-group"><label>Tgl Canvassing</label><input type="date" id="noo-tgl" required></div>
         </div>
-        <div class="form-group"><label>Keterangan</label><textarea id="noo-ket" rows="2" placeholder="Catatan tambahan..."></textarea></div>
+        <div class="form-group"><label>Keterangan</label><textarea id="noo-ket" rows="2" placeholder="Catatan..."></textarea></div>
         <button type="submit" class="btn-submit">💾 Simpan NOO</button>
       </form>
     </div>
@@ -442,34 +328,28 @@
         </div>
         <div class="form-group"><label>Tanggal</label><input type="date" id="foto-tgl" required></div>
       </div>
-
       <div class="upload-area" id="uploadArea" onclick="openCamera()">
         <div class="icon">📸</div>
         <div class="text"><strong>Ambil Foto Sekarang</strong></div>
         <div class="warning">⚠️ Hanya bisa foto langsung dari kamera</div>
         <input type="file" id="fotoInput" accept="image/*" capture="environment" onchange="handlePhoto(event)" hidden>
       </div>
-
       <div id="previewArea" style="display:none; text-align:center; margin:10px 0;">
         <canvas id="watermarkCanvas" style="max-width:100%; border-radius:10px;"></canvas>
-        <br><button type="button" onclick="resetFoto()" style="margin-top:8px; padding:6px 12px; border-radius:6px; border:1px solid #f44336; color:#f44336; background:white; cursor:pointer;">✕ Hapus & Foto Ulang</button>
+        <br><button type="button" onclick="resetFoto()" style="margin-top:8px; padding:6px 12px; border-radius:6px; border:1px solid #f44336; color:#f44336; background:white; cursor:pointer;">✕ Foto Ulang</button>
       </div>
-
       <div class="gps-section">
         <span>📍</span> <span id="gpsText">Mengambil lokasi...</span>
         <div id="gpsCoords" style="display:none; margin-top:4px;"></div>
       </div>
-
       <div class="validation-panel" id="valPanel" style="display:none;">
         <strong>🔒 Validasi Anti-Cheat</strong>
         <div id="valItems" style="margin-top:8px;"></div>
       </div>
-
       <div class="distance-panel" id="distancePanel" style="display:none;">
         <strong>📍 Jarak dari Toko</strong>
         <div id="distanceResult" style="margin-top:8px;"></div>
       </div>
-
       <div class="form-group" style="margin-top:10px;"><label>Keterangan</label><textarea id="foto-ket" rows="2" placeholder="Catatan..."></textarea></div>
       <button type="submit" class="btn-submit" id="btnFoto" disabled>📤 Upload Foto</button>
     </form>
@@ -481,9 +361,14 @@
 // ============================================
 // CONFIG
 // ============================================
-var API = 'https://script.google.com/macros/s/AKfycbx-NXKae0B4BmsOIjgce5ql9idl24wbJOjAAkvx_LwhkoalV23mYt2eXSUeqJcJJj59/exec';
+var API = 'https://script.google.com/macros/s/AKfycbxd7DZkGBX7UiIV5QLnp2MIOS9S4xRUSVUQ_BeVXHGo33Zbf0ovLFVHkEqUhe59oAL_/exec';
 var appData = {};
 var photoData = { base64: null, timestamp: null, gps: { lat: null, long: null } };
+
+// ⚡ CACHE untuk percepat loading
+var dataCache = null;
+var cacheTime = 0;
+var CACHE_DURATION = 60000; // 1 menit cache
 
 // ============================================
 // INIT
@@ -498,20 +383,27 @@ window.addEventListener('load', function() {
 });
 
 // ============================================
-// LOAD DATA
+// ⚡ LOAD DATA (OPTIMIZED - with cache)
 // ============================================
-async function loadAllData() {
+async function loadAllData(forceRefresh) {
+  // ⚡ Gunakan cache jika masih valid
+  if (!forceRefresh && dataCache && (Date.now() - cacheTime < CACHE_DURATION)) {
+    appData = dataCache;
+    renderAll();
+    showLoading(false);
+    return;
+  }
+
   showLoading(true);
   try {
-    var res = await fetch(API + '?action=all');
+    var res = await fetch(API + '?action=all', { cache: 'no-store' });
     appData = await res.json();
-    renderDashboard();
-    renderTokoLoss();
-    renderNOO();
-    renderWarning();
-    renderLeaderboard();
-    loadSalesmanDropdowns();
-    document.getElementById('lastUpdate').textContent = 'Update: ' + appData.lastUpdate;
+    
+    // ⚡ Simpan ke cache
+    dataCache = appData;
+    cacheTime = Date.now();
+    
+    renderAll();
   } catch(e) {
     console.error('Load error:', e);
     showNotif('❌ Gagal load data. Cek koneksi.', 'error');
@@ -519,22 +411,134 @@ async function loadAllData() {
   showLoading(false);
 }
 
+// ⚡ Render semua sekaligus
+function renderAll() {
+  renderDashboard();
+  renderTokoLoss();
+  renderNOO();
+  renderWarning();
+  renderLeaderboard();
+  loadSalesmanDropdowns();
+  populateFilterOptions();
+  document.getElementById('lastUpdate').textContent = 'Update: ' + appData.lastUpdate;
+}
+
 // ============================================
 // LOAD SALESMAN DROPDOWNS
 // ============================================
 function loadSalesmanDropdowns() {
   var master = appData.masterSalesman || [];
-  var dropdownIds = ['dr-sales', 'noo-sales', 'foto-sales'];
-  dropdownIds.forEach(function(id) {
+  ['dr-sales', 'noo-sales', 'foto-sales'].forEach(function(id) {
     var sel = document.getElementById(id);
     if (!sel) return;
     sel.innerHTML = '<option value="">--Pilih Salesman--</option>';
     master.forEach(function(s) {
-      var kode = s['Kode Salesman'] || '';
-      var nama = s['Nama Salesman'] || '';
-      sel.innerHTML += '<option value="' + kode + '">' + kode + ' - ' + nama + '</option>';
+      sel.innerHTML += '<option value="' + (s['Kode Salesman']||'') + '">' + (s['Kode Salesman']||'') + ' - ' + (s['Nama Salesman']||'') + '</option>';
     });
   });
+}
+
+// ============================================
+// POPULATE FILTER OPTIONS (dynamic dari data)
+// ============================================
+function populateFilterOptions() {
+  var loss = appData.tokoLoss || [];
+  var ew = appData.earlyWarning || [];
+  var master = appData.masterSalesman || [];
+
+  // Salesman filter
+  var slsOptions = '<option value="">Semua</option>';
+  master.forEach(function(s) {
+    slsOptions += '<option value="' + (s['Kode Salesman']||'') + '">' + (s['Kode Salesman']||'') + ' - ' + (s['Nama Salesman']||'') + '</option>';
+  });
+  document.getElementById('fl-sls').innerHTML = slsOptions;
+  document.getElementById('fw-sls').innerHTML = slsOptions;
+
+  // Kategori filter (dari data toko loss)
+  var kategoriSet = {};
+  loss.forEach(function(t) { if (t['Kategori Loss']) kategoriSet[t['Kategori Loss']] = true; });
+  var katOptions = '<option value="">Semua</option>';
+  Object.keys(kategoriSet).forEach(function(k) { katOptions += '<option value="' + k + '">' + k + '</option>'; });
+  document.getElementById('fl-kat').innerHTML = katOptions;
+
+  // Status filter (toko loss)
+  var statusSet = {};
+  loss.forEach(function(t) { if (t.Status) statusSet[t.Status] = true; });
+  var stOptions = '<option value="">Semua</option>';
+  Object.keys(statusSet).forEach(function(s) { stOptions += '<option value="' + s + '">' + s + '</option>'; });
+  document.getElementById('fl-status').innerHTML = stOptions;
+
+  // Status filter (warning)
+  var ewStatusSet = {};
+  ew.forEach(function(t) { if (t.Status) ewStatusSet[t.Status] = true; });
+  var ewStOptions = '<option value="">Semua</option>';
+  Object.keys(ewStatusSet).forEach(function(s) { ewStOptions += '<option value="' + s + '">' + s + '</option>'; });
+  document.getElementById('fw-status').innerHTML = ewStOptions;
+}
+
+// ============================================
+// 🔍 FILTER TOKO LOSS
+// ============================================
+function applyFilterLoss() {
+  var hk = gv('fl-hk');
+  var pola = gv('fl-pola');
+  var sls = gv('fl-sls');
+  var kat = gv('fl-kat');
+  var status = gv('fl-status');
+
+  var data = appData.tokoLoss || [];
+  var filtered = data.filter(function(t) {
+    if (hk && String(t.HK || '') !== hk) return false;
+    if (pola && String(t.Pola || '') !== pola) return false;
+    if (sls && String(t['Kode Salesman'] || '') !== sls) return false;
+    if (kat && String(t['Kategori Loss'] || '') !== kat) return false;
+    if (status && String(t.Status || '') !== status) return false;
+    return true;
+  });
+
+  document.getElementById('tokoLossTable').innerHTML = makeTable(filtered, ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Kategori Loss','Alasan Loss','Status']);
+  document.getElementById('fl-count').textContent = filtered.length + '/' + data.length + ' toko';
+}
+
+function resetFilterLoss() {
+  document.getElementById('fl-hk').value = '';
+  document.getElementById('fl-pola').value = '';
+  document.getElementById('fl-sls').value = '';
+  document.getElementById('fl-kat').value = '';
+  document.getElementById('fl-status').value = '';
+  renderTokoLoss();
+  document.getElementById('fl-count').textContent = '';
+}
+
+// ============================================
+// 🔍 FILTER EARLY WARNING
+// ============================================
+function applyFilterWarning() {
+  var hk = gv('fw-hk');
+  var pola = gv('fw-pola');
+  var sls = gv('fw-sls');
+  var status = gv('fw-status');
+
+  var data = appData.earlyWarning || [];
+  var filtered = data.filter(function(t) {
+    if (hk && String(t.HK || '') !== hk) return false;
+    if (pola && String(t.Pola || '') !== pola) return false;
+    if (sls && String(t['Kode Salesman'] || '') !== sls) return false;
+    if (status && String(t.Status || '') !== status) return false;
+    return true;
+  });
+
+  document.getElementById('warningTable').innerHTML = makeTable(filtered, ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Hari Sejak Last Order','Status','Action Required']);
+  document.getElementById('fw-count').textContent = filtered.length + '/' + data.length + ' toko';
+}
+
+function resetFilterWarning() {
+  document.getElementById('fw-hk').value = '';
+  document.getElementById('fw-pola').value = '';
+  document.getElementById('fw-sls').value = '';
+  document.getElementById('fw-status').value = '';
+  renderWarning();
+  document.getElementById('fw-count').textContent = '';
 }
 
 // ============================================
@@ -543,50 +547,38 @@ function loadSalesmanDropdowns() {
 function searchToko(query, prefix) {
   var dropdown = document.getElementById(prefix + '-dropdown');
   var statusMsg = document.getElementById(prefix + '-status-msg');
-  if (!query || query.length < 1) {
-    dropdown.style.display = 'none';
-    statusMsg.style.display = 'none';
-    return;
-  }
+  if (!query || query.length < 1) { dropdown.style.display = 'none'; statusMsg.style.display = 'none'; return; }
   var toko = appData.tokoLoss || [];
   var q = query.toLowerCase();
   var results = toko.filter(function(t) {
-    var kode = String(t['Kode Toko'] || '').toLowerCase();
-    var nama = String(t['Nama Toko'] || '').toLowerCase();
-    var kodeSls = String(t['Kode Salesman'] || '').toLowerCase();
-    return kode.indexOf(q) > -1 || nama.indexOf(q) > -1 || kodeSls.indexOf(q) > -1;
+    return String(t['Kode Toko']||'').toLowerCase().indexOf(q) > -1 || String(t['Nama Toko']||'').toLowerCase().indexOf(q) > -1 || String(t['Kode Salesman']||'').toLowerCase().indexOf(q) > -1;
   });
   if (results.length === 0) {
     dropdown.style.display = 'block';
-    dropdown.innerHTML = '<div class="search-item" style="color:#c62828;">❌ Kode toko tidak ditemukan.</div>';
-    statusMsg.style.display = 'block';
-    statusMsg.style.color = '#c62828';
-    statusMsg.textContent = '❌ Tidak ditemukan. Tersedia: ' + toko.map(function(t){return t['Kode Toko']}).join(', ');
+    dropdown.innerHTML = '<div class="search-item" style="color:#c62828;">❌ Tidak ditemukan</div>';
+    statusMsg.style.display = 'block'; statusMsg.style.color = '#c62828';
+    statusMsg.textContent = '❌ Tersedia: ' + toko.map(function(t){return t['Kode Toko']}).join(', ');
     return;
   }
   dropdown.style.display = 'block';
   dropdown.innerHTML = results.map(function(t) {
-    var status = String(t.Status || '');
     var badge = '';
-    if (status.indexOf('Recovery') > -1 && status.indexOf('Tidak') === -1) badge = '🟢';
-    else if (status.indexOf('Proses') > -1) badge = '🟡';
-    else if (status.indexOf('Belum') > -1) badge = '🔴';
-    else if (status.indexOf('Tidak Bisa') > -1) badge = '⚫';
-    var hkPola = (t.HK || t.Pola) ? ' | 📅 ' + (t.HK || '-') + ' (' + (t.Pola || '-') + ')' : '';
-    return '<div class="search-item" onclick="selectToko(\'' + t['Kode Toko'] + '\', \'' + (t['Nama Toko'] || '').replace(/'/g, "\\'") + '\', \'' + prefix + '\')">' +
-      '<span class="code">' + t['Kode Toko'] + '</span> - ' + t['Nama Toko'] + ' ' + badge +
-      '<br><span class="detail">' + (t['Kode Salesman'] || '') + ' (' + (t.Salesman || '') + ')' + hkPola + '</span></div>';
+    var st = String(t.Status||'');
+    if (st.indexOf('Recovery')>-1 && st.indexOf('Tidak')===-1) badge='🟢';
+    else if (st.indexOf('Proses')>-1) badge='🟡';
+    else if (st.indexOf('Belum')>-1) badge='🔴';
+    else if (st.indexOf('Tidak Bisa')>-1) badge='⚫';
+    var hkPola = (t.HK||t.Pola) ? ' | 📅'+( t.HK||'-')+' ('+( t.Pola||'-')+')' : '';
+    return '<div class="search-item" onclick="selectToko(\''+t['Kode Toko']+'\',\''+(t['Nama Toko']||'').replace(/'/g,"\\'")+'\',\''+prefix+'\')"><span class="code">'+t['Kode Toko']+'</span> - '+t['Nama Toko']+' '+badge+'<br><span class="detail">'+(t['Kode Salesman']||'')+' ('+(t.Salesman||'')+')'+hkPola+'</span></div>';
   }).join('');
   statusMsg.style.display = 'none';
 }
 
 function selectToko(kode, nama, prefix) {
-  document.getElementById(prefix + '-' + (prefix === 'rv' ? 'kode' : 'toko')).value = kode;
+  document.getElementById(prefix + '-' + (prefix==='rv'?'kode':'toko')).value = kode;
   document.getElementById(prefix + '-dropdown').style.display = 'none';
-  var statusMsg = document.getElementById(prefix + '-status-msg');
-  statusMsg.style.display = 'block';
-  statusMsg.style.color = '#2e7d32';
-  statusMsg.textContent = '✅ ' + kode + ' - ' + nama;
+  var sm = document.getElementById(prefix + '-status-msg');
+  sm.style.display = 'block'; sm.style.color = '#2e7d32'; sm.textContent = '✅ ' + kode + ' - ' + nama;
 }
 
 document.addEventListener('click', function(e) {
@@ -595,7 +587,7 @@ document.addEventListener('click', function(e) {
 });
 
 // ============================================
-// POST DATA VIA GET (ANTI CORS)
+// POST DATA VIA GET
 // ============================================
 async function postData(action, payload) {
   showNotif('⏳ Menyimpan...', 'loading');
@@ -612,7 +604,8 @@ async function postData(action, payload) {
       await fetch(API, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: dataStr });
       showNotif('✅ Data terkirim!', 'success');
     }
-    setTimeout(loadAllData, 2000);
+    // ⚡ Force refresh setelah input
+    setTimeout(function(){ loadAllData(true); }, 2000);
   } catch(e) {
     console.error('PostData error:', e);
     showNotif('❌ Gagal: ' + e.message, 'error');
@@ -626,282 +619,189 @@ function renderDashboard() {
   var s = appData.summary;
   if (!s) return;
   document.getElementById('summaryCards').innerHTML =
-    '<div class="card card-danger"><div class="card-value">' + s.tokoLoss.totalLoss + '</div><div class="card-label">Toko Loss</div></div>' +
-    '<div class="card card-success"><div class="card-value">' + s.tokoLoss.recovered + '</div><div class="card-label">Recovered</div></div>' +
-    '<div class="card card-warning"><div class="card-value">' + s.tokoLoss.inProcess + '</div><div class="card-label">In Process</div></div>' +
-    '<div class="card card-info"><div class="card-value">' + (s.noo.nooActive || 0) + '</div><div class="card-label">NOO Active</div></div>' +
-    '<div class="card card-purple"><div class="card-value">' + s.tokoLoss.recoveryRate + '%</div><div class="card-label">Recovery Rate</div></div>';
+    '<div class="card card-danger"><div class="card-value">'+s.tokoLoss.totalLoss+'</div><div class="card-label">Toko Loss</div></div>'+
+    '<div class="card card-success"><div class="card-value">'+s.tokoLoss.recovered+'</div><div class="card-label">Recovered</div></div>'+
+    '<div class="card card-warning"><div class="card-value">'+s.tokoLoss.inProcess+'</div><div class="card-label">In Process</div></div>'+
+    '<div class="card card-info"><div class="card-value">'+(s.noo.nooActive||0)+'</div><div class="card-label">NOO Active</div></div>'+
+    '<div class="card card-purple"><div class="card-value">'+s.tokoLoss.recoveryRate+'%</div><div class="card-label">Recovery Rate</div></div>';
   var rate = s.tokoLoss.recoveryRate;
   var bar = document.getElementById('progressRecovery');
-  bar.style.width = rate + '%';
-  bar.textContent = rate + '%';
-  bar.className = 'progress-bar-fill ' + (rate >= 70 ? 'progress-green' : rate >= 40 ? 'progress-orange' : 'progress-red');
+  bar.style.width = rate+'%'; bar.textContent = rate+'%';
+  bar.className = 'progress-bar-fill ' + (rate>=70?'progress-green':rate>=40?'progress-orange':'progress-red');
   var ew = appData.earlyWarning || [];
-  var critical = ew.filter(function(r) { return String(r.Status || '').indexOf('Critical') > -1 || String(r.Status || '').indexOf('Almost') > -1; });
-  var alertGrid = document.getElementById('alertGrid');
-  if (critical.length === 0) {
-    alertGrid.innerHTML = '<div style="color:#2e7d32;">✅ Tidak ada toko critical</div>';
-  } else {
-    alertGrid.innerHTML = critical.map(function(t) {
-      var cls = String(t.Status).indexOf('Almost') > -1 ? 'alert-almost' : 'alert-critical';
-      var hkInfo = (t.HK || t.Pola) ? '<br><small>📅 ' + (t.HK || '-') + ' | ' + (t.Pola || '-') + '</small>' : '';
-      return '<div class="alert-card ' + cls + '"><strong>' + (t['Nama Toko'] || '-') + '</strong><br><small>' + (t['Kode Salesman'] || '') + ' (' + (t.Salesman || '-') + ')</small> | ' + (t['Hari Sejak Last Order'] || '?') + ' hari' + hkInfo + '<br><em>' + (t['Action Required'] || '-') + '</em></div>';
-    }).join('');
-  }
+  var critical = ew.filter(function(r){return String(r.Status||'').indexOf('Critical')>-1||String(r.Status||'').indexOf('Almost')>-1;});
+  var ag = document.getElementById('alertGrid');
+  if (!critical.length) { ag.innerHTML = '<div style="color:#2e7d32;">✅ Tidak ada toko critical</div>'; }
+  else { ag.innerHTML = critical.map(function(t){var cls=String(t.Status).indexOf('Almost')>-1?'alert-almost':'alert-critical';return '<div class="alert-card '+cls+'"><strong>'+(t['Nama Toko']||'-')+'</strong><br><small>'+(t['Kode Salesman']||'')+' ('+(t.Salesman||'-')+')</small> | '+(t['Hari Sejak Last Order']||'?')+' hari<br><em>'+(t['Action Required']||'-')+'</em></div>';}).join(''); }
 }
 
 // ============================================
 // RENDER TABLES
 // ============================================
 function renderTokoLoss() {
-  document.getElementById('tokoLossTable').innerHTML = makeTable(appData.tokoLoss || [], ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Kategori Loss','Alasan Loss','Status']);
+  var data = appData.tokoLoss || [];
+  document.getElementById('tokoLossTable').innerHTML = makeTable(data, ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Kategori Loss','Alasan Loss','Status']);
+  document.getElementById('fl-count').textContent = data.length + ' toko';
 }
 function renderNOO() {
-  document.getElementById('nooTable').innerHTML = makeTable(appData.noo || [], ['No','Kode NOO','Nama Toko','HK','Pola','Kode Salesman','Salesman','Tgl Canvassing','Status NOO']);
+  document.getElementById('nooTable').innerHTML = makeTable(appData.noo||[], ['No','Kode NOO','Nama Toko','HK','Pola','Kode Salesman','Salesman','Tgl Canvassing','Status NOO']);
 }
 function renderWarning() {
-  document.getElementById('warningTable').innerHTML = makeTable(appData.earlyWarning || [], ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Hari Sejak Last Order','Status','Action Required']);
+  var data = appData.earlyWarning || [];
+  document.getElementById('warningTable').innerHTML = makeTable(data, ['No','Kode Toko','Nama Toko','HK','Pola','Kode Salesman','Salesman','Hari Sejak Last Order','Status','Action Required']);
+  document.getElementById('fw-count').textContent = data.length + ' toko';
 }
 function renderLeaderboard() {
-  var data = appData.leaderboard || [];
+  var data = appData.leaderboard||[];
   var medals = ['🥇','🥈','🥉','4️⃣'];
-  document.getElementById('leaderboardList').innerHTML = data.map(function(item, i) {
-    return '<div class="leaderboard-item"><div class="lb-rank">' + (medals[i] || (i+1)) + '</div><div class="lb-info"><div class="lb-name">' + (item.Salesman || '-') + '</div><div class="lb-code">' + (item['Kode Salesman'] || '') + '</div><div class="lb-points">Recovery: ' + (item['Poin Recovery (10/toko)'] || 0) + ' | NOO: ' + (item['Poin NOO (15/toko)'] || 0) + ' | EC: ' + (item['Poin EC Bonus'] || 0) + '</div></div><div class="lb-score">' + (item['Total Poin'] || 0) + ' pts</div></div>';
+  document.getElementById('leaderboardList').innerHTML = data.map(function(item,i){
+    return '<div class="leaderboard-item"><div class="lb-rank">'+(medals[i]||(i+1))+'</div><div class="lb-info"><div class="lb-name">'+(item.Salesman||'-')+'</div><div class="lb-code">'+(item['Kode Salesman']||'')+'</div><div class="lb-points">Recovery: '+(item['Poin Recovery (10/toko)']||0)+' | NOO: '+(item['Poin NOO (15/toko)']||0)+' | EC: '+(item['Poin EC Bonus']||0)+'</div></div><div class="lb-score">'+(item['Total Poin']||0)+' pts</div></div>';
   }).join('');
 }
 
 function makeTable(data, cols) {
   if (!data.length) return '<p style="color:#999;">Belum ada data</p>';
-  var html = '<table><thead><tr>' + cols.map(function(c) { return '<th>' + c + '</th>'; }).join('') + '</tr></thead><tbody>';
-  data.forEach(function(row) {
-    html += '<tr>' + cols.map(function(c) {
-      var val = (row[c] !== undefined && row[c] !== '') ? String(row[c]) : '-';
-      if (val.indexOf('Recovery') > -1 && val.indexOf('Tidak') === -1) val = '<span class="badge badge-green">' + val + '</span>';
-      else if (val.indexOf('Critical') > -1 || val.indexOf('Belum') > -1) val = '<span class="badge badge-red">' + val + '</span>';
-      else if (val.indexOf('Warning') > -1 || val.indexOf('Proses') > -1) val = '<span class="badge badge-yellow">' + val + '</span>';
-      else if (val.indexOf('Active') > -1) val = '<span class="badge badge-green">' + val + '</span>';
-      else if (val.indexOf('Sehat') > -1) val = '<span class="badge badge-green">' + val + '</span>';
-      if (c === 'HK' && val !== '-') val = '<span class="hk-pola-badge">📅 ' + val + '</span>';
-      if (c === 'Pola' && val !== '-') val = '<span class="hk-pola-badge">🔄 ' + val + '</span>';
-      return '<td>' + val + '</td>';
-    }).join('') + '</tr>';
+  var html = '<table><thead><tr>'+cols.map(function(c){return '<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>';
+  data.forEach(function(row){
+    html += '<tr>'+cols.map(function(c){
+      var val = (row[c]!==undefined&&row[c]!=='') ? String(row[c]) : '-';
+      if (val.indexOf('Recovery')>-1&&val.indexOf('Tidak')===-1) val='<span class="badge badge-green">'+val+'</span>';
+      else if (val.indexOf('Critical')>-1||val.indexOf('Belum')>-1) val='<span class="badge badge-red">'+val+'</span>';
+      else if (val.indexOf('Warning')>-1||val.indexOf('Proses')>-1) val='<span class="badge badge-yellow">'+val+'</span>';
+      else if (val.indexOf('Active')>-1||val.indexOf('Sehat')>-1) val='<span class="badge badge-green">'+val+'</span>';
+      if (c==='HK'&&val!=='-') val='<span class="hk-pola-badge">📅 '+val+'</span>';
+      if (c==='Pola'&&val!=='-') val='<span class="hk-pola-badge">🔄 '+val+'</span>';
+      return '<td>'+val+'</td>';
+    }).join('')+'</tr>';
   });
-  return html + '</tbody></table>';
+  return html+'</tbody></table>';
 }
 
 // ============================================
 // NAVIGATION
 // ============================================
 function showSection(id, btn) {
-  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
-  document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.getElementById('sec-' + id).classList.add('active');
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('sec-'+id).classList.add('active');
   if (btn) btn.classList.add('active');
 }
 function showFormTab(id, btn) {
-  document.querySelectorAll('.form-content').forEach(function(f) { f.classList.remove('active'); });
-  document.querySelectorAll('.form-tab-btn').forEach(function(t) { t.classList.remove('active'); });
-  document.getElementById('form-' + id).classList.add('active');
+  document.querySelectorAll('.form-content').forEach(function(f){f.classList.remove('active');});
+  document.querySelectorAll('.form-tab-btn').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('form-'+id).classList.add('active');
   if (btn) btn.classList.add('active');
 }
 
 // ============================================
-// SUBMIT DAILY REPORT
+// SUBMIT FORMS
 // ============================================
 async function submitDaily(e) {
   e.preventDefault();
-  var kodeSalesman = gv('dr-sales');
-  await postData('addDailyReport', {
-    tanggal: gv('dr-tgl'),
-    kodeSalesman: kodeSalesman,
-    salesman: getSalesmanName(kodeSalesman),
-    totalKunjungan: parseInt(gv('dr-visit')) || 0,
-    effectiveCall: parseInt(gv('dr-ec')) || 0,
-    tokoLossVisit: parseInt(gv('dr-loss')) || 0,
-    recoveryBerhasil: parseInt(gv('dr-rec')) || 0,
-    nooHariIni: parseInt(gv('dr-noo')) || 0,
-    tokoWarningVisit: parseInt(gv('dr-warn')) || 0,
-    tokoCriticalVisit: parseInt(gv('dr-crit')) || 0,
-    kendala: gv('dr-kendala'),
-    actionPlan: gv('dr-action')
-  });
-  document.getElementById('dailyForm').reset();
-  setToday('dr-tgl');
+  var k = gv('dr-sales');
+  await postData('addDailyReport', { tanggal:gv('dr-tgl'), kodeSalesman:k, salesman:getSalesmanName(k), totalKunjungan:parseInt(gv('dr-visit'))||0, effectiveCall:parseInt(gv('dr-ec'))||0, tokoLossVisit:parseInt(gv('dr-loss'))||0, recoveryBerhasil:parseInt(gv('dr-rec'))||0, nooHariIni:parseInt(gv('dr-noo'))||0, tokoWarningVisit:parseInt(gv('dr-warn'))||0, tokoCriticalVisit:parseInt(gv('dr-crit'))||0, kendala:gv('dr-kendala'), actionPlan:gv('dr-action') });
+  document.getElementById('dailyForm').reset(); setToday('dr-tgl');
 }
 
-// ============================================
-// SUBMIT REVISIT
-// ============================================
 async function submitRevisit(e) {
   e.preventDefault();
   var kodeToko = gv('rv-kode').trim();
-  var toko = appData.tokoLoss || [];
-  var found = toko.find(function(t) { return t['Kode Toko'] === kodeToko; });
-  if (!found) {
-    showNotif('❌ Kode toko "' + kodeToko + '" tidak ditemukan!', 'error');
-    var statusMsg = document.getElementById('rv-status-msg');
-    statusMsg.style.display = 'block';
-    statusMsg.style.color = '#c62828';
-    statusMsg.textContent = '❌ Tidak ada. Tersedia: ' + toko.map(function(t){return t['Kode Toko']}).join(', ');
+  var toko = appData.tokoLoss||[];
+  if (!toko.find(function(t){return t['Kode Toko']===kodeToko;})) {
+    showNotif('❌ Kode "'+kodeToko+'" tidak ditemukan!','error');
+    var sm=document.getElementById('rv-status-msg'); sm.style.display='block'; sm.style.color='#c62828'; sm.textContent='❌ Tersedia: '+toko.map(function(t){return t['Kode Toko']}).join(', ');
     return;
   }
-  await postData('updateTokoLoss', {
-    kodeToko: kodeToko,
-    revisitKe: parseInt(gv('rv-ke')),
-    tanggalRevisit: gv('rv-tgl'),
-    status: gv('rv-status'),
-    hasilRevisit: gv('rv-hasil')
-  });
-  document.getElementById('revisitForm').reset();
-  document.getElementById('rv-status-msg').style.display = 'none';
-  setToday('rv-tgl');
+  await postData('updateTokoLoss', { kodeToko:kodeToko, revisitKe:parseInt(gv('rv-ke')), tanggalRevisit:gv('rv-tgl'), status:gv('rv-status'), hasilRevisit:gv('rv-hasil') });
+  document.getElementById('revisitForm').reset(); document.getElementById('rv-status-msg').style.display='none'; setToday('rv-tgl');
 }
 
-// ============================================
-// SUBMIT NOO
-// ============================================
 async function submitNOO(e) {
   e.preventDefault();
-  var kodeSalesman = gv('noo-sales');
-  await postData('addNOO', {
-    namaToko: gv('noo-nama'),
-    alamat: gv('noo-alamat'),
-    namaPemilik: gv('noo-pemilik'),
-    noHP: gv('noo-hp'),
-    hk: gv('noo-hk'),
-    pola: gv('noo-pola'),
-    kodeSalesman: kodeSalesman,
-    salesman: getSalesmanName(kodeSalesman),
-    tglCanvassing: gv('noo-tgl'),
-    keterangan: gv('noo-ket')
-  });
-  document.getElementById('nooForm').reset();
-  setToday('noo-tgl');
+  var k = gv('noo-sales');
+  await postData('addNOO', { namaToko:gv('noo-nama'), alamat:gv('noo-alamat'), namaPemilik:gv('noo-pemilik'), noHP:gv('noo-hp'), hk:gv('noo-hk'), pola:gv('noo-pola'), kodeSalesman:k, salesman:getSalesmanName(k), tglCanvassing:gv('noo-tgl'), keterangan:gv('noo-ket') });
+  document.getElementById('nooForm').reset(); setToday('noo-tgl');
 }
 
 // ============================================
 // GPS
 // ============================================
 function getGPS() {
-  if (!navigator.geolocation) {
-    document.getElementById('gpsText').textContent = '⚠️ GPS tidak didukung';
-    document.getElementById('gpsText').className = 'gps-error';
-    return;
-  }
+  if (!navigator.geolocation) { document.getElementById('gpsText').textContent='⚠️ GPS tidak didukung'; document.getElementById('gpsText').className='gps-error'; return; }
   navigator.geolocation.getCurrentPosition(
     function(pos) {
-      photoData.gps.lat = pos.coords.latitude;
-      photoData.gps.long = pos.coords.longitude;
-      document.getElementById('gpsText').textContent = '✅ GPS OK';
-      document.getElementById('gpsText').className = 'gps-success';
-      document.getElementById('gpsCoords').style.display = 'block';
-      document.getElementById('gpsCoords').innerHTML = '<small>Lat: ' + pos.coords.latitude.toFixed(6) + ' | Long: ' + pos.coords.longitude.toFixed(6) + '</small>';
+      photoData.gps.lat=pos.coords.latitude; photoData.gps.long=pos.coords.longitude;
+      document.getElementById('gpsText').textContent='✅ GPS OK'; document.getElementById('gpsText').className='gps-success';
+      document.getElementById('gpsCoords').style.display='block';
+      document.getElementById('gpsCoords').innerHTML='<small>Lat: '+pos.coords.latitude.toFixed(6)+' | Long: '+pos.coords.longitude.toFixed(6)+'</small>';
     },
     function(err) {
-      console.error('GPS error:', err);
-      var msg = '';
-      if (err.code === 1) msg = '❌ GPS diblokir. Klik 🔒 di URL → izinkan Location → Refresh';
-      else if (err.code === 2) msg = '❌ GPS tidak tersedia';
-      else if (err.code === 3) msg = '⏱️ GPS timeout. Refresh halaman';
-      else msg = '❌ GPS error';
-      document.getElementById('gpsText').textContent = msg;
-      document.getElementById('gpsText').className = 'gps-error';
-      document.getElementById('gpsCoords').style.display = 'block';
-      document.getElementById('gpsCoords').innerHTML = '<button onclick="retryGPS()" style="padding:5px 10px; background:#1a237e; color:white; border:none; border-radius:6px; cursor:pointer; font-size:0.75rem;">🔄 Coba Lagi</button>';
+      var msg='❌ GPS error';
+      if(err.code===1) msg='❌ GPS diblokir. Klik 🔒 di URL → izinkan → Refresh';
+      else if(err.code===2) msg='❌ GPS tidak tersedia';
+      else if(err.code===3) msg='⏱️ GPS timeout. Refresh';
+      document.getElementById('gpsText').textContent=msg; document.getElementById('gpsText').className='gps-error';
+      document.getElementById('gpsCoords').style.display='block';
+      document.getElementById('gpsCoords').innerHTML='<button onclick="retryGPS()" style="padding:5px 10px;background:#1a237e;color:white;border:none;border-radius:6px;cursor:pointer;font-size:0.75rem;">🔄 Coba Lagi</button>';
     },
-    { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    { enableHighAccuracy:true, timeout:10000, maximumAge:60000 }
   );
 }
-
-function retryGPS() {
-  document.getElementById('gpsText').textContent = '📍 Mencoba ulang...';
-  document.getElementById('gpsText').className = '';
-  document.getElementById('gpsCoords').style.display = 'none';
-  getGPS();
-}
+function retryGPS() { document.getElementById('gpsText').textContent='📍 Mencoba...'; document.getElementById('gpsText').className=''; document.getElementById('gpsCoords').style.display='none'; getGPS(); }
 
 // ============================================
-// CAMERA
+// CAMERA & PHOTO
 // ============================================
 function openCamera() {
   if (!photoData.gps.lat) {
     if (navigator.geolocation) {
-      showNotif('📍 Mengambil GPS dulu...', 'loading');
-      navigator.geolocation.getCurrentPosition(
-        function(pos) {
-          photoData.gps.lat = pos.coords.latitude;
-          photoData.gps.long = pos.coords.longitude;
-          document.getElementById('gpsText').textContent = '✅ GPS OK';
-          document.getElementById('gpsText').className = 'gps-success';
-          document.getElementById('gpsCoords').style.display = 'block';
-          document.getElementById('gpsCoords').innerHTML = '<small>Lat: ' + pos.coords.latitude.toFixed(6) + ' | Long: ' + pos.coords.longitude.toFixed(6) + '</small>';
-          showNotif('✅ GPS OK! Silakan foto.', 'success');
-          document.getElementById('fotoInput').click();
-        },
-        function(err) {
-          showNotif('❌ GPS wajib! Klik 🔒 di URL → izinkan Location → Refresh', 'error');
-        },
-        { enableHighAccuracy: true, timeout: 10000 }
-      );
-    } else {
-      showNotif('❌ Browser tidak support GPS', 'error');
-    }
+      showNotif('📍 Mengambil GPS...','loading');
+      navigator.geolocation.getCurrentPosition(function(pos){
+        photoData.gps.lat=pos.coords.latitude; photoData.gps.long=pos.coords.longitude;
+        document.getElementById('gpsText').textContent='✅ GPS OK'; document.getElementById('gpsText').className='gps-success';
+        document.getElementById('gpsCoords').style.display='block';
+        document.getElementById('gpsCoords').innerHTML='<small>Lat: '+pos.coords.latitude.toFixed(6)+' | Long: '+pos.coords.longitude.toFixed(6)+'</small>';
+        showNotif('✅ GPS OK!','success'); document.getElementById('fotoInput').click();
+      },function(){showNotif('❌ GPS wajib! Izinkan Location','error');},{enableHighAccuracy:true,timeout:10000});
+    } else { showNotif('❌ Browser tidak support GPS','error'); }
     return;
   }
   document.getElementById('fotoInput').click();
 }
 
-// ============================================
-// HANDLE PHOTO
-// ============================================
 function handlePhoto(e) {
-  var file = e.target.files[0];
-  if (!file) return;
+  var file = e.target.files[0]; if (!file) return;
   photoData.timestamp = new Date();
-  var fileAge = (Date.now() - file.lastModified) / 1000;
-  var isRecent = fileAge < 300;
-  var isImage = file.type.indexOf('image/') === 0;
-  var sizeOK = file.size > 50000 && file.size < 15000000;
-  var hasGPS = photoData.gps.lat !== null;
+  var fileAge = (Date.now()-file.lastModified)/1000;
+  var isRecent = fileAge<300, isImage = file.type.indexOf('image/')===0;
+  var sizeOK = file.size>50000&&file.size<15000000, hasGPS = photoData.gps.lat!==null;
 
-  document.getElementById('valPanel').style.display = 'block';
-  document.getElementById('valItems').innerHTML =
-    '<div class="val-item ' + (isRecent ? 'passed' : 'failed') + '"><span>' + (isRecent ? '✅' : '❌') + '</span> Foto baru (' + Math.round(fileAge) + 's lalu)</div>' +
-    '<div class="val-item ' + (hasGPS ? 'passed' : 'failed') + '"><span>' + (hasGPS ? '✅' : '❌') + '</span> GPS ' + (hasGPS ? 'OK' : 'tidak aktif') + '</div>' +
-    '<div class="val-item ' + (sizeOK ? 'passed' : 'failed') + '"><span>' + (sizeOK ? '✅' : '❌') + '</span> Ukuran ' + (file.size/1024/1024).toFixed(1) + 'MB</div>' +
-    '<div class="val-item ' + (isImage ? 'passed' : 'failed') + '"><span>' + (isImage ? '✅' : '⚠️') + '</span> Format ' + file.type + '</div>';
+  document.getElementById('valPanel').style.display='block';
+  document.getElementById('valItems').innerHTML=
+    '<div class="val-item '+(isRecent?'passed':'failed')+'"><span>'+(isRecent?'✅':'❌')+'</span> Foto baru ('+Math.round(fileAge)+'s)</div>'+
+    '<div class="val-item '+(hasGPS?'passed':'failed')+'"><span>'+(hasGPS?'✅':'❌')+'</span> GPS '+(hasGPS?'OK':'off')+'</div>'+
+    '<div class="val-item '+(sizeOK?'passed':'failed')+'"><span>'+(sizeOK?'✅':'❌')+'</span> '+(file.size/1024/1024).toFixed(1)+'MB</div>'+
+    '<div class="val-item '+(isImage?'passed':'failed')+'"><span>'+(isImage?'✅':'⚠️')+'</span> '+file.type+'</div>';
 
-  if (!isRecent || !hasGPS || !sizeOK) {
-    showNotif('❌ Foto ditolak! Pastikan GPS aktif & foto baru.', 'error');
-    return;
-  }
+  if (!isRecent||!hasGPS||!sizeOK) { showNotif('❌ Foto ditolak!','error'); return; }
 
-  var kodeSalesman = gv('foto-sales');
-  var namaSalesman = getSalesmanName(kodeSalesman);
-
+  var ks=gv('foto-sales'), ns=getSalesmanName(ks);
   var reader = new FileReader();
   reader.onload = function(ev) {
     var img = new Image();
     img.onload = function() {
-      var canvas = document.getElementById('watermarkCanvas');
-      var ctx = canvas.getContext('2d');
-      var w = img.width, h = img.height;
-      if (w > 800) { h = (800/w)*h; w = 800; }
-      canvas.width = w;
-      canvas.height = h;
-      ctx.drawImage(img, 0, 0, w, h);
-      ctx.fillStyle = 'rgba(0,0,0,0.7)';
-      ctx.fillRect(0, h-50, w, 50);
-      ctx.fillStyle = '#fff';
-      ctx.font = 'bold 11px Arial';
-      ctx.fillText('WIN BACK STORE | ' + kodeSalesman + ' (' + namaSalesman + ') | ' + photoData.timestamp.toLocaleString('id-ID'), 8, h-30);
-      ctx.font = '10px Arial';
-      ctx.fillText('GPS: ' + (photoData.gps.lat || '-') + ', ' + (photoData.gps.long || '-'), 8, h-12);
-      photoData.base64 = canvas.toDataURL('image/jpeg', 0.7).split(',')[1];
-      document.getElementById('previewArea').style.display = 'block';
-      document.getElementById('uploadArea').style.display = 'none';
-      document.getElementById('btnFoto').disabled = false;
-      showNotif('✅ Foto valid! Siap upload.', 'success');
+      var canvas=document.getElementById('watermarkCanvas'), ctx=canvas.getContext('2d');
+      var w=img.width, h=img.height; if(w>800){h=(800/w)*h;w=800;}
+      canvas.width=w; canvas.height=h; ctx.drawImage(img,0,0,w,h);
+      ctx.fillStyle='rgba(0,0,0,0.7)'; ctx.fillRect(0,h-50,w,50);
+      ctx.fillStyle='#fff'; ctx.font='bold 11px Arial';
+      ctx.fillText('WIN BACK STORE | '+ks+' ('+ns+') | '+photoData.timestamp.toLocaleString('id-ID'),8,h-30);
+      ctx.font='10px Arial'; ctx.fillText('GPS: '+photoData.gps.lat+', '+photoData.gps.long,8,h-12);
+      photoData.base64=canvas.toDataURL('image/jpeg',0.7).split(',')[1];
+      document.getElementById('previewArea').style.display='block';
+      document.getElementById('uploadArea').style.display='none';
+      document.getElementById('btnFoto').disabled=false;
+      showNotif('✅ Foto valid!','success');
     };
     img.src = ev.target.result;
   };
@@ -909,32 +809,32 @@ function handlePhoto(e) {
 }
 
 // ============================================
-// CEK JARAK (INFO ONLY - NON BLOCKING)
+// CEK JARAK (INFO ONLY)
 // ============================================
 async function checkDistance(kodeToko) {
   if (!photoData.gps.lat || !kodeToko) return;
-  var distPanel = document.getElementById('distancePanel');
-  var distResult = document.getElementById('distanceResult');
-  distPanel.style.display = 'block';
-  distResult.innerHTML = '<small>📍 Mengecek jarak...</small>';
+  var dp = document.getElementById('distancePanel');
+  var dr = document.getElementById('distanceResult');
+  dp.style.display = 'block';
+  dr.innerHTML = '<small>📍 Mengecek jarak...</small>';
   try {
     var res = await fetch(API + '?action=checkRadius&kodeToko=' + encodeURIComponent(kodeToko) + '&lat=' + photoData.gps.lat + '&long=' + photoData.gps.long);
     var data = await res.json();
     if (data.needRegister) {
-      distResult.innerHTML = '<div class="distance-result distance-medium">📍 Lokasi toko belum terdaftar. GPS kamu akan disimpan sebagai lokasi toko ini.</div>';
+      dr.innerHTML = '<div class="distance-result distance-medium">📍 Lokasi toko belum terdaftar. GPS akan disimpan otomatis.</div>';
     } else {
-      var distance = data.distance || 0;
-      var cls = distance <= 100 ? 'distance-close' : distance <= 500 ? 'distance-medium' : 'distance-far';
-      var icon = distance <= 100 ? '✅' : distance <= 500 ? '⚠️' : '📍';
-      distResult.innerHTML = '<div class="distance-result ' + cls + '">' + icon + ' Jarak kamu dari toko: <strong>' + distance + ' meter</strong><br><small>Info untuk supervisor</small></div>';
+      var d = data.distance || 0;
+      var cls = d <= 100 ? 'distance-close' : d <= 500 ? 'distance-medium' : 'distance-far';
+      var icon = d <= 100 ? '✅' : d <= 500 ? '⚠️' : '📍';
+      dr.innerHTML = '<div class="distance-result ' + cls + '">' + icon + ' Jarak dari toko: <strong>' + d + ' meter</strong></div>';
     }
   } catch(err) {
-    distResult.innerHTML = '<div class="distance-result distance-medium">⚠️ Tidak bisa cek jarak</div>';
+    dr.innerHTML = '<div class="distance-result distance-medium">⚠️ Tidak bisa cek jarak</div>';
   }
 }
 
 // ============================================
-// SUBMIT FOTO (NON-BLOCKING GPS)
+// SUBMIT FOTO (NON-BLOCKING)
 // ============================================
 async function submitFoto(e) {
   e.preventDefault();
@@ -942,17 +842,15 @@ async function submitFoto(e) {
   var kodeToko = gv('foto-toko').trim();
   var kodeSalesman = gv('foto-sales');
   var namaSalesman = getSalesmanName(kodeSalesman);
-  if (!kodeToko) { showNotif('❌ Pilih toko dulu!', 'error'); return; }
-  if (!kodeSalesman) { showNotif('❌ Pilih salesman dulu!', 'error'); return; }
+  if (!kodeToko) { showNotif('❌ Pilih toko!', 'error'); return; }
+  if (!kodeSalesman) { showNotif('❌ Pilih salesman!', 'error'); return; }
 
   var toko = appData.tokoLoss || [];
   var foundToko = toko.find(function(t) { return t['Kode Toko'] === kodeToko; });
   var namaToko = foundToko ? foundToko['Nama Toko'] : kodeToko;
 
-  // Cek jarak (INFO ONLY - tidak memblokir)
   await checkDistance(kodeToko);
 
-  // Upload foto (SELALU bisa, tidak diblokir jarak)
   showNotif('⏳ Mengupload foto...', 'loading');
   try {
     await fetch(API, {
@@ -979,10 +877,10 @@ async function submitFoto(e) {
     });
     showNotif('✅ Foto berhasil diupload!', 'success');
     resetFoto();
-    setTimeout(loadAllData, 3000);
+    setTimeout(function(){ loadAllData(true); }, 3000);
   } catch(e2) {
     console.error('Upload error:', e2);
-    showNotif('❌ Gagal upload. Coba lagi.', 'error');
+    showNotif('❌ Gagal upload.', 'error');
   }
 }
 
@@ -1003,13 +901,12 @@ function resetFoto() {
 // ============================================
 // HELPERS
 // ============================================
-function getSalesmanName(kodeSalesman) {
-  if (!kodeSalesman) return '';
-  var master = appData.masterSalesman || [];
-  var found = master.find(function(s) { return s['Kode Salesman'] === kodeSalesman; });
-  return found ? found['Nama Salesman'] : kodeSalesman;
+function getSalesmanName(k) {
+  if (!k) return '';
+  var m = appData.masterSalesman || [];
+  var f = m.find(function(s) { return s['Kode Salesman'] === k; });
+  return f ? f['Nama Salesman'] : k;
 }
-
 function gv(id) { var el = document.getElementById(id); return el ? el.value : ''; }
 function setToday(id) { var el = document.getElementById(id); if (el) el.value = new Date().toISOString().split('T')[0]; }
 function showLoading(show) { document.getElementById('loadingOverlay').className = show ? 'loading-overlay' : 'loading-overlay hidden'; }
