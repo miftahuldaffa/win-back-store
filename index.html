@@ -559,7 +559,7 @@ function getGPS(){
   if(!navigator.geolocation){document.getElementById('gpsText').textContent='GPS tidak didukung';document.getElementById('gpsText').className='gps-error';return;}
   navigator.geolocation.getCurrentPosition(function(pos){
     photoData.gps.lat=pos.coords.latitude;photoData.gps.long=pos.coords.longitude;
-    document.getElementById('gpsText').textContent='&#9989; GPS OK';document.getElementById('gpsText').className='gps-success';
+    document.getElementById('gpsText').innerHTML='&#9989; GPS OK';document.getElementById('gpsText').className='gps-success';
     document.getElementById('gpsCoords').style.display='block';
     document.getElementById('gpsCoords').innerHTML='<small>Lat: '+pos.coords.latitude.toFixed(6)+' | Long: '+pos.coords.longitude.toFixed(6)+'</small>';
   },function(err){
@@ -567,7 +567,7 @@ function getGPS(){
     if(err.code===1)msg='GPS diblokir. Klik icon gembok di URL lalu izinkan lalu Refresh';
     else if(err.code===2)msg='GPS tidak tersedia';
     else if(err.code===3)msg='GPS timeout';
-    document.getElementById('gpsText').textContent='&#10060; '+msg;document.getElementById('gpsText').className='gps-error';
+    document.getElementById('gpsText').innerHTML='&#10060; '+msg;document.getElementById('gpsText').className='gps-error';
     document.getElementById('gpsCoords').style.display='block';
     document.getElementById('gpsCoords').innerHTML='<button onclick="retryGPS()" style="padding:5px 10px;background:#1a237e;color:white;border:none;border-radius:6px;cursor:pointer;font-size:0.75rem;">&#128260; Coba Lagi</button>';
   },{enableHighAccuracy:true,timeout:10000,maximumAge:60000});
